@@ -289,7 +289,7 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	 * @param g2d
 	 */
 	private void drawLrcText(Graphics2D g2d) {
-		int alphaValue = 5;
+		int alphaValue = 2;
 		// 画当前歌词之前的歌词
 		for (int i = lyricsLineNum - 1; i >= 0; i--) {
 			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i < (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
@@ -316,16 +316,22 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 			// 如果计算出的textX为负数，将textX置为0(实现：如果歌词宽大于view宽，则居左显示，否则居中显示)
 			textX = Math.max(textX, 10);
 
-			g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
+			//
+
+			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * (i - 1) < (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
+				g2d.setPaint(new Color(255, 255, 255, 100));
+			} else {
+				g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
+			}
 
 			g2d.drawString(text, textX, offsetY + (SCALEIZEWORDDEF + INTERVAL)
 					* i);
 
-			alphaValue += 5;
+			alphaValue += alphaValue;
 
 		}
 
-		alphaValue = 5;
+		alphaValue = 2;
 		// 画当前歌词之后的歌词
 		for (int i = lyricsLineNum + 1; i < lyricsLineTreeMap.size(); i++) {
 			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i > height
@@ -353,12 +359,17 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 			// 如果计算出的textX为负数，将textX置为0(实现：如果歌词宽大于view宽，则居左显示，否则居中显示)
 			textX = Math.max(textX, 10);
 
-			g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
+			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * (i + 1) > height
+					- (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
+				g2d.setPaint(new Color(255, 255, 255, 100));
+			} else {
+				g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
+			}
 
 			g2d.drawString(text, textX, offsetY + (SCALEIZEWORDDEF + INTERVAL)
 					* i);
 
-			alphaValue += 5;
+			alphaValue += alphaValue;
 		}
 
 		// 画当前高亮的歌词行

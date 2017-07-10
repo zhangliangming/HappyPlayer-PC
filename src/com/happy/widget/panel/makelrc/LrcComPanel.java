@@ -369,9 +369,7 @@ public class LrcComPanel extends JPanel {
 				wDisIntervals[j] = time;
 			}
 			lyricsLineInfo.setStartTime(startTime);
-			lyricsLineInfo.setStartTimeStr(startTimeStr);
 			lyricsLineInfo.setEndTime(endTime);
-			lyricsLineInfo.setEndTimeStr(endTimeStr);
 			lyricsLineInfo.setWordsDisInterval(wDisIntervals);
 			return lyricsLineInfo;
 		}

@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="haplayer/libs/JPlayer-lib.jar"/>
 	<classpathentry kind="lib" path="haplayer/libs/LyricsAnalyze.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="haplayer/libs/commons-codec-1.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

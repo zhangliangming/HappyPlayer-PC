@@ -269,8 +269,8 @@ public class MakeLrcDialog extends JDialog {
 
 						LyricsInfo lyricsInfo = new LyricsInfo();
 						Map<String, Object> tags = new HashMap<String, Object>();
-						tags.put(LyricsTag.TAG_SINGER, songInfo.getSinger());
-						tags.put(LyricsTag.TAG_SONGNAME, songInfo.getTitle());
+						tags.put(LyricsTag.TAG_ARTIST, songInfo.getSinger());
+						tags.put(LyricsTag.TAG_TITLE, songInfo.getTitle());
 						tags.put(LyricsTag.TAG_OFFSET, 0);
 						tags.put(LyricsTag.TAG_BY, Constants.APPNAME);
 						lyricsInfo.setLyricsTags(tags);
