@@ -1,24 +1,24 @@
 ----------------------------------------------------------------
-2017-07-10 15:00:16.571 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance a816c00e-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:08.857 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance a816c00e-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:17.276 GMT:
-Shutting down instance a816c00e-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:09.754 GMT:
+Shutting down instance a816c00e-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:17.346 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 08264012-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:09.821 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 08264012-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:18.002 GMT:
-Shutting down instance 08264012-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.305 GMT:
+Shutting down instance 08264012-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
-2017-07-10 15:00:18.040 GMT Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+2017-07-11 16:40:10.320 GMT Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'c:\haplayer\db\' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -101,82 +101,82 @@ java.sql.SQLException: Database 'c:\haplayer\db\' not found.
 ============= end nested exception, level (1) ===========
 Cleanup action completed
 ----------------------------------------------------------------
-2017-07-10 15:00:18.166 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 40348015-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.375 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 40348015-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:18.662 GMT:
-Shutting down instance 40348015-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.594 GMT:
+Shutting down instance 40348015-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:18.748 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance b8450018-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.663 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance b8450018-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:19.408 GMT:
-Shutting down instance b8450018-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.860 GMT:
+Shutting down instance b8450018-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:19.522 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 185e801c-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:10.929 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 185e801c-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:20.303 GMT:
-Shutting down instance 185e801c-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:11.158 GMT:
+Shutting down instance 185e801c-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:20.466 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 6074401f-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:11.249 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 6074401f-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:21.001 GMT:
-Shutting down instance 6074401f-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:11.546 GMT:
+Shutting down instance 6074401f-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:21.073 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance a094c023-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:11.637 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance a094c023-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:21.429 GMT:
-Shutting down instance a094c023-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:11.960 GMT:
+Shutting down instance a094c023-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:00:21.493 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance e8afc026-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:12.035 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance e8afc026-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:00:22.049 GMT:
-Shutting down instance e8afc026-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:40:12.322 GMT:
+Shutting down instance e8afc026-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:01:34.080 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 00cd0029-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:41:08.005 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 00cd0029-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:01:34.547 GMT:
-Shutting down instance 00cd0029-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:41:08.423 GMT:
+Shutting down instance 00cd0029-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2017-07-10 15:01:34.601 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 98ec802c-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:41:08.526 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.1 - (706043): instance 98ec802c-015d-3285-b019-00000a5be398
 on database directory C:\haplayer\db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2017-07-10 15:01:35.125 GMT:
-Shutting down instance 98ec802c-015d-2d03-e4a1-00000a5bede8
+2017-07-11 16:41:09.010 GMT:
+Shutting down instance 98ec802c-015d-3285-b019-00000a5be398
 ----------------------------------------------------------------

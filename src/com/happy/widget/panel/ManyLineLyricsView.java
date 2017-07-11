@@ -46,7 +46,26 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 
 	private int width = 0;
 
+	/**
+	 * 视图高度
+	 */
 	private int height = 0;
+	/**
+	 * 歌词进入渐变透明度的区域高度大小，默认取视图高度的1/4
+	 */
+	private int shadeHeight = 0;
+	/**
+	 * 渐变最大透明度
+	 */
+	private int maxAlphaValue = 255;
+	/**
+	 * 渐变最小透明度
+	 */
+	private int minAlphaValue = 100;
+	/**
+	 * 渐变梯度值
+	 */
+	private int dAlphaValue = 0;
 
 	/**
 	 * 是否有歌词
@@ -171,6 +190,10 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	public ManyLineLyricsView(int width, int height, boolean hasLrcEvent) {
 		this.width = width;
 		this.height = height;
+
+		shadeHeight = height / 4;
+		//
+		dAlphaValue = shadeHeight / (maxAlphaValue - minAlphaValue);
 		initSizeWord();
 		initColor();
 		ObserverManage.getObserver().addObserver(this);
@@ -289,7 +312,6 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	 * @param g2d
 	 */
 	private void drawLrcText(Graphics2D g2d) {
-		// int alphaValue = 2;
 		// 画当前歌词之前的歌词
 		for (int i = lyricsLineNum - 1; i >= 0; i--) {
 			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i < (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
@@ -317,21 +339,21 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 			textX = Math.max(textX, 10);
 
 			//
-			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * (i - 1) < (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
-				g2d.setPaint(new Color(255, 255, 255, 100));
+			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i < shadeHeight) {
+				// 进入了渐变区域
+				int alphaValue = (shadeHeight - (int) (offsetY + (SCALEIZEWORDDEF + INTERVAL)
+						* i))
+						* dAlphaValue;
+				g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
 			} else {
-				// g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
 				g2d.setPaint(new Color(255, 255, 255, 255));
 			}
 
 			g2d.drawString(text, textX, offsetY + (SCALEIZEWORDDEF + INTERVAL)
 					* i);
 
-			// alphaValue += alphaValue;
-
 		}
 
-		// alphaValue = 2;
 		// 画当前歌词之后的歌词
 		for (int i = lyricsLineNum + 1; i < lyricsLineTreeMap.size(); i++) {
 			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i > height
@@ -359,18 +381,19 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 			// 如果计算出的textX为负数，将textX置为0(实现：如果歌词宽大于view宽，则居左显示，否则居中显示)
 			textX = Math.max(textX, 10);
 
-			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * (i + 1) > height
-					- (SCALEIZEWORDDEF + SCALEIZEWORDDEF / 2)) {
-				g2d.setPaint(new Color(255, 255, 255, 100));
+			if (offsetY + (SCALEIZEWORDDEF + INTERVAL) * i > (height - shadeHeight)) {
+				// 进入了渐变区域
+				int alphaValue = ((int) (offsetY + (SCALEIZEWORDDEF + INTERVAL)
+						* i) - (height - shadeHeight))
+						* dAlphaValue;
+				g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
 			} else {
-				// g2d.setPaint(new Color(255, 255, 255, 255 - alphaValue));
 				g2d.setPaint(new Color(255, 255, 255, 255));
 			}
 
 			g2d.drawString(text, textX, offsetY + (SCALEIZEWORDDEF + INTERVAL)
 					* i);
 
-			// alphaValue += alphaValue;
 		}
 
 		// 画当前高亮的歌词行
