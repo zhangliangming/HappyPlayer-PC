@@ -54,6 +54,7 @@ public class TranslateLrcComPanel extends JPanel {
 		this.add(songNameJLabel);
 	}
 
+	
 	/**
 	 * 获取输入框的翻译歌词
 	 * 
