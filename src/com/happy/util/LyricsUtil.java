@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.SwingWorker;
 
 import com.happy.common.Constants;
-import com.happy.lyrics.system.LyricsInfoIO;
+import com.happy.lyrics.utils.LyricsIOUtils;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
 
@@ -76,7 +76,7 @@ public class LyricsUtil {
 	 */
 	public static File getLrcFile(String displayName) {
 		File lrcFile = null;
-		List<String> lrcExts = LyricsInfoIO.getSupportLyricsExts();
+		List<String> lrcExts = LyricsIOUtils.getSupportLyricsExts();
 		for (int i = 0; i < lrcExts.size(); i++) {
 			String lrcFilePath = Constants.PATH_LYRICS + File.separator
 					+ displayName + "." + lrcExts.get(i);

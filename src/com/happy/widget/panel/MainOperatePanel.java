@@ -253,7 +253,7 @@ public class MainOperatePanel extends JPanel implements Observer {
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 					MessageIntent messageIntent = new MessageIntent();
-					messageIntent.setAction(MessageIntent.OPEN_MAKELRCDIALOG);
+					messageIntent.setAction(MessageIntent.OPEN_MADELRCDIALOG);
 					ObserverManage.getObserver().setMessage(messageIntent);
 				}
 			}

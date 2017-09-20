@@ -11,6 +11,8 @@ import java.util.TreeMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButtonMenuItem;
@@ -19,6 +21,7 @@ import javax.swing.SwingWorker;
 import com.happy.common.BaseData;
 import com.happy.lyrics.model.LyricsLineInfo;
 import com.happy.manage.LyricsManage;
+import com.happy.manage.MediaManage;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
 import com.happy.model.SongMessage;
@@ -85,6 +88,17 @@ public class LyricsPanel extends JPanel implements Observer {
 	 * 歌词大小
 	 */
 	private JMenu lrcSizeMenuItem;
+
+	/**
+	 * 翻译歌词
+	 */
+	private JMenuItem translateMenuItem;
+
+	/**
+	 * 音译歌词
+	 */
+	private JMenuItem transliterationMenuItem;
+
 	/**
 	 * 歌词选项
 	 */
@@ -109,6 +123,68 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private void initPopMenu() {
 		menuPop = new JPopupMenu();
+		//
+		translateMenuItem = new JMenuItem("制作翻译歌词");
+		translateMenuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SongInfo songInfo = MediaManage.getMediaManage().getSongInfo();
+				if (songInfo == null || BaseData.playInfoID.equals("-1")) {
+					JOptionPane.showMessageDialog(null, "请选择歌曲", "提示",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					LyricsParserUtil lyricsParserUtil = LyricsManage
+							.getLyricsParser(songInfo.getSid());
+
+					if (lyricsParserUtil == null
+							|| lyricsParserUtil.getLyricsLineTreeMap() == null
+							|| lyricsParserUtil.getLyricsLineTreeMap().size() == 0) {
+						JOptionPane.showMessageDialog(null, "请先制作歌曲，然后再制作翻译歌词",
+								"提示", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					MessageIntent messageIntent = new MessageIntent();
+					messageIntent.setAction(MessageIntent.OPEN_MADETRANSLATELRCDIALOG);
+					ObserverManage.getObserver().setMessage(messageIntent);
+				
+				}
+
+			}
+		});
+
+		transliterationMenuItem = new JMenuItem("制作音译歌词");
+		transliterationMenuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				SongInfo songInfo = MediaManage.getMediaManage().getSongInfo();
+				if (songInfo == null || BaseData.playInfoID.equals("-1")) {
+					JOptionPane.showMessageDialog(null, "请选择歌曲", "提示",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					LyricsParserUtil lyricsParserUtil = LyricsManage
+							.getLyricsParser(songInfo.getSid());
+
+					if (lyricsParserUtil == null
+							|| lyricsParserUtil.getLyricsLineTreeMap() == null
+							|| lyricsParserUtil.getLyricsLineTreeMap().size() == 0) {
+						JOptionPane.showMessageDialog(null, "请先制作歌曲，然后再制作音译歌词",
+								"提示", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					MessageIntent messageIntent = new MessageIntent();
+					messageIntent.setAction(MessageIntent.OPEN_MADETRANSLITERATIONLRCDIALOG);
+					ObserverManage.getObserver().setMessage(messageIntent);
+				
+				}
+
+			}
+		});
+
 		//
 		lrcColorMenuItem = new JMenu("配色方案");
 		ButtonGroup lrcColorGroup = new ButtonGroup();
@@ -188,8 +264,11 @@ public class LyricsPanel extends JPanel implements Observer {
 			lrcSizeMenuItem.add(lrcSizeItem[i]);
 		}
 		//
+		menuPop.add(translateMenuItem);
+		menuPop.add(transliterationMenuItem);
 		menuPop.add(lrcColorMenuItem);
 		menuPop.add(lrcSizeMenuItem);
+
 	}
 
 	/**
@@ -197,7 +276,7 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private void initComponent(int width, final int height) {
 		this.setLayout(new BorderLayout());
-		manyLineLyricsView = new ManyLineLyricsView(width, height,true);
+		manyLineLyricsView = new ManyLineLyricsView(width, height, true);
 
 		metaDownListener = new MetaDownListener() {
 

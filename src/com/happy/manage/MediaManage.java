@@ -1,6 +1,7 @@
 package com.happy.manage;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.happy.model.SongInfo;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
 import com.happy.service.MediaPlayerService;
+import com.happy.util.AudioFilter;
 import com.happy.util.DateUtil;
 import com.happy.util.IDGenerate;
 import com.happy.util.MediaUtils;
@@ -92,20 +94,31 @@ public class MediaManage implements Observer {
 			category.setCid(IDGenerate.getId(Category.key));
 			category.setCreateTime(DateUtil.dateToString(new Date()));
 			// 加载默认歌曲
-			String defFilePath = Constants.PATH_AUDIO + File.separator
-					+ "蔡健雅 - Beautiful Love.mp3";
-			File defFile = new File(defFilePath);
+
+			File defFile = new File(Constants.PATH_AUDIO + File.separator);
 
 			List<SongInfo> songInfos = new ArrayList<SongInfo>();
-			if (defFile.exists()) {
-				SongInfo songInfo = MediaUtils.getSongInfoByFile(defFilePath);
-				if (songInfo != null) {
-					songInfo.setCategoryId(category.getCid());
-					SongInfoDB.getSongInfoDB().add(songInfo);
+			File[] defAudioFiles = defFile.listFiles(new FileFilter() {
 
-					songInfos.add(songInfo);
+				@Override
+				public boolean accept(File f) {
+					return new AudioFilter().accept(f);
+				}
+			});
+			for (int i = 0; i < defAudioFiles.length; i++) {
+				File audioFile = defAudioFiles[i];
+				if (audioFile.exists()) {
+					SongInfo songInfo = MediaUtils.getSongInfoByFile(audioFile
+							.getPath());
+					if (songInfo != null) {
+						songInfo.setCategoryId(category.getCid());
+						SongInfoDB.getSongInfoDB().add(songInfo);
+
+						songInfos.add(songInfo);
+					}
 				}
 			}
+
 			category.setSongInfos(songInfos);
 			categorys.add(category);
 			CategoryDB.getCategoryDB().add(category);

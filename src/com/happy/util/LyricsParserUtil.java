@@ -6,7 +6,7 @@ import java.util.TreeMap;
 import com.happy.lyrics.LyricsFileReader;
 import com.happy.lyrics.model.LyricsInfo;
 import com.happy.lyrics.model.LyricsLineInfo;
-import com.happy.lyrics.system.LyricsInfoIO;
+import com.happy.lyrics.utils.LyricsIOUtils;
 
 /**
  * 
@@ -17,6 +17,7 @@ import com.happy.lyrics.system.LyricsInfoIO;
 public class LyricsParserUtil {
 
 	private LyricsFileReader lyricsFileReader;
+	private LyricsInfo lyricsIfno;
 
 	/**
 	 * TreeMap，用于封装每行的歌词信息
@@ -24,11 +25,11 @@ public class LyricsParserUtil {
 	private TreeMap<Integer, LyricsLineInfo> lyricsLineTreeMap = null;
 
 	public LyricsParserUtil(File lyricsFile) {
-		lyricsFileReader = LyricsInfoIO.getLyricsFileReader(lyricsFile);
+		lyricsFileReader = LyricsIOUtils.getLyricsFileReader(lyricsFile);
 		try {
-			LyricsInfo lyricsIfno = lyricsFileReader.readFile(lyricsFile);
+			lyricsIfno = lyricsFileReader.readFile(lyricsFile);
 
-			lyricsLineTreeMap = lyricsIfno.getLyricsLineInfos();
+			lyricsLineTreeMap = lyricsIfno.getLyricsLineInfoTreeMap();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,7 +81,7 @@ public class LyricsParserUtil {
 		LyricsLineInfo lyrLine = lyricsLineTreeMap.get(lyricsLineNum);
 		int elapseTime = lyrLine.getStartTime();
 		for (int i = 0; i < lyrLine.getLyricsWords().length; i++) {
-			elapseTime += lyrLine.wordsDisInterval[i];
+			elapseTime += lyrLine.getWordsDisInterval()[i];
 			if (msec < elapseTime) {
 				return i;
 			}
@@ -101,9 +102,9 @@ public class LyricsParserUtil {
 		LyricsLineInfo lyrLine = lyricsLineTreeMap.get(lyricsLineNum);
 		int elapseTime = lyrLine.getStartTime();
 		for (int i = 0; i < lyrLine.getLyricsWords().length; i++) {
-			elapseTime += lyrLine.wordsDisInterval[i];
+			elapseTime += lyrLine.getWordsDisInterval()[i];
 			if (msec < elapseTime) {
-				return lyrLine.wordsDisInterval[i] - (elapseTime - msec);
+				return lyrLine.getWordsDisInterval()[i] - (elapseTime - msec);
 			}
 		}
 		return 0;
@@ -169,9 +170,10 @@ public class LyricsParserUtil {
 		int startTime = lyrLine.getStartTime();
 		int endTime = lyrLine.getEndTime();
 		for (int i = 0; i < lyrLine.getLyricsWords().length; i++) {
-			elapseTime += lyrLine.wordsDisInterval[i];
+			elapseTime += lyrLine.getWordsDisInterval()[i];
 			if (msec < elapseTime) {
-				int time = lyrLine.wordsDisInterval[i] - (elapseTime - msec);
+				int time = lyrLine.getWordsDisInterval()[i]
+						- (elapseTime - msec);
 				return height / (endTime - startTime) * time;
 			}
 		}
@@ -200,6 +202,14 @@ public class LyricsParserUtil {
 	public void setLyricsLineTreeMap(
 			TreeMap<Integer, LyricsLineInfo> lyricsLineTreeMap) {
 		this.lyricsLineTreeMap = lyricsLineTreeMap;
+	}
+
+	public LyricsInfo getLyricsIfno() {
+		return lyricsIfno;
+	}
+
+	public void setLyricsIfno(LyricsInfo lyricsIfno) {
+		this.lyricsIfno = lyricsIfno;
 	}
 
 }

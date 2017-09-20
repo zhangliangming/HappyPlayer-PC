@@ -42,6 +42,18 @@ public class LyricsManage {
 	}
 
 	/**
+	 * 获取歌词解析
+	 * @param sid
+	 * @return
+	 */
+	public static LyricsParserUtil getLyricsParser(String sid) {
+		if (sid.equals(mSid)) {
+			return lyricsParser;
+		}
+		return null;
+	}
+
+	/**
 	 * 
 	 * @param sid
 	 * @param lrcInputStream

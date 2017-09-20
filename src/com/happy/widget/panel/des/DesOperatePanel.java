@@ -356,7 +356,7 @@ public class DesOperatePanel extends JPanel {
 						Thread.sleep(100);
 						MessageIntent messageIntent = new MessageIntent();
 						messageIntent
-								.setAction(MessageIntent.OPEN_MAKELRCDIALOG);
+								.setAction(MessageIntent.OPEN_MADELRCDIALOG);
 						ObserverManage.getObserver().setMessage(messageIntent);
 					} catch (Exception e2) {
 						e2.printStackTrace();

@@ -11,11 +11,30 @@ public class MessageIntent {
 	/**
 	 * 打开制作歌词窗口
 	 */
-	public static final String OPEN_MAKELRCDIALOG = "com.happy.frame.openmakelrcdialog";
+	public static final String OPEN_MADELRCDIALOG = "com.happy.frame.openmadelrcdialog";
 	/**
 	 * 关闭制作歌词窗口
 	 */
-	public static final String CLOSE_MAKELRCDIALOG = "com.happy.frame.closemakelrcdialog";
+	public static final String CLOSE_MADELRCDIALOG = "com.happy.frame.closemadelrcdialog";
+
+	/**
+	 * 打开制作翻译歌词窗口
+	 */
+	public static final String OPEN_MADETRANSLATELRCDIALOG = "com.happy.frame.openmadeTranslatelrcdialog";
+	/**
+	 * 关闭制作翻译歌词窗口
+	 */
+	public static final String CLOSE_MADETRANSLATELRCDIALOG = "com.happy.frame.closemadeTranslatelrcdialog";
+
+	/**
+	 * 打开制作音译歌词窗口
+	 */
+	public static final String OPEN_MADETRANSLITERATIONLRCDIALOG = "com.happy.frame.openmadeTransliterationlrcdialog";
+	/**
+	 * 关闭制作音译歌词窗口
+	 */
+	public static final String CLOSE_MADETRANSLITERATIONLRCDIALOG = "com.happy.frame.closemadeTransliterationlrcdialog";
+
 	/**
 	 * 默认
 	 */

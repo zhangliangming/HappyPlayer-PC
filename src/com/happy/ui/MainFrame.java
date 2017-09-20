@@ -17,7 +17,8 @@ import com.happy.common.BaseData;
 import com.happy.common.Constants;
 import com.happy.event.PanelMoveFrame;
 import com.happy.logger.LoggerManage;
-import com.happy.manage.MakeLrcDialogManage;
+import com.happy.manage.MadeLrcDialogManage;
+import com.happy.manage.MadeTranslateLrcDialogManage;
 import com.happy.manage.MediaManage;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
@@ -215,11 +216,17 @@ public class MainFrame extends JFrame implements Observer {
 				desktopLrcDialog.setVisible(false);
 				openDesLrcDialog();
 			} else if (messageIntent.getAction().equals(
-					MessageIntent.OPEN_MAKELRCDIALOG)) {
+					MessageIntent.OPEN_MADELRCDIALOG)) {
 				openMakeLrcDialog();
 			} else if (messageIntent.getAction().equals(
-					MessageIntent.CLOSE_MAKELRCDIALOG)) {
-				hideMakeLrcDialog();
+					MessageIntent.CLOSE_MADELRCDIALOG)) {
+				hideMadeLrcDialog();
+			} else if (messageIntent.getAction().equals(
+					MessageIntent.OPEN_MADETRANSLATELRCDIALOG)) {
+				openMakeTranslateLrcDialog();
+			} else if (messageIntent.getAction().equals(
+					MessageIntent.CLOSE_MADETRANSLATELRCDIALOG)) {
+				hideMadeTranslateLrcDialog();
 			}
 		} else if (data instanceof SongMessage) {
 			SongMessage songMessage = (SongMessage) data;
@@ -234,27 +241,53 @@ public class MainFrame extends JFrame implements Observer {
 	}
 
 	/**
+	 * 关闭翻译歌词窗口
+	 */
+	private void hideMadeTranslateLrcDialog() {
+		MadeTranslateLrcDialogManage.hideMadeTranslateLrcDialog();
+
+	}
+
+	/**
+	 * 打开翻译歌词窗口
+	 */
+	private void openMakeTranslateLrcDialog() {
+		this.setExtendedState(Frame.ICONIFIED);
+
+		MadeTranslateLrcDialogManage.initMadeTranslateLrcDialog();
+
+		int x = this.getX()
+				+ (this.getWidth() - MadeTranslateLrcDialogManage.getWidth())
+				/ 2;
+		int y = this.getY()
+				+ (this.getHeight() - MadeTranslateLrcDialogManage.getHeight())
+				/ 2;
+
+		MadeTranslateLrcDialogManage.showMadeTranslateLrcDialog(x, y);
+	}
+
+	/**
 	 * 隐藏制作歌词窗口
 	 */
-	private void hideMakeLrcDialog() {
-		MakeLrcDialogManage.hideMakeLrcDialog();
+	private void hideMadeLrcDialog() {
+		MadeLrcDialogManage.hideMadeLrcDialog();
 	}
 
 	/**
 	 * 打开制作歌词窗口
 	 */
 	private void openMakeLrcDialog() {
-		
+
 		this.setExtendedState(Frame.ICONIFIED);
-		
-		MakeLrcDialogManage.initMakeLrcDialog();
+
+		MadeLrcDialogManage.initMadeLrcDialog();
 
 		int x = this.getX()
-				+ (this.getWidth() - MakeLrcDialogManage.getWidth()) / 2;
+				+ (this.getWidth() - MadeLrcDialogManage.getWidth()) / 2;
 		int y = this.getY()
-				+ (this.getHeight() - MakeLrcDialogManage.getHeight()) / 2;
+				+ (this.getHeight() - MadeLrcDialogManage.getHeight()) / 2;
 
-		MakeLrcDialogManage.showMakeLrcDialog(x, y);
+		MadeLrcDialogManage.showMadeLrcDialog(x, y);
 	}
 
 	/**
