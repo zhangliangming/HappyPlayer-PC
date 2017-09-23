@@ -90,7 +90,7 @@ public class MadeTranslateLrcDialog extends JDialog {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				songInfo = MediaManage.getMediaManage().getSongInfo();
-				songNameJLabel.setText(songInfo.getDisplayName());
+				songNameJLabel.setText("  " + songInfo.getDisplayName());
 				translateLrcPanel.initData(songInfo);
 			}
 		});
@@ -138,17 +138,27 @@ public class MadeTranslateLrcDialog extends JDialog {
 		songNameJLabel.setOpaque(true);
 		songNameJLabel.setForeground(Color.BLACK);
 		songNameJLabel.setBackground(new Color(240, 240, 240));
-		songNameJLabel.setBounds(1, titlePanel.getHeight(), width - 2, lH);
+		songNameJLabel.setBounds(1, titlePanel.getHeight(), width - 2, lH / 2);
+
+		// 提示语
+		JLabel tipLabel = new JLabel("  温馨提示：请在每一行填写对应的翻译");
+		tipLabel.setOpaque(true);
+		tipLabel.setForeground(Color.RED);
+		tipLabel.setBackground(new Color(240, 240, 240));
+		tipLabel.setBounds(1,
+				songNameJLabel.getY() + songNameJLabel.getHeight(), width - 2,
+				lH / 2);
 
 		// 歌词面板
 		translateLrcPanel = new TranslateLrcPanel((width - 1 * 2), (height
-				- titleHeight - lH - 1));
+				- titleHeight - lH - lH / 2 - 1));
 		translateLrcPanel.setBackground(Color.white);
-		translateLrcPanel.setBounds(1,
-				titlePanel.getHeight() + songNameJLabel.getHeight(),
-				width - 1 * 2, height
+		translateLrcPanel.setBounds(
+				1,
+				titlePanel.getHeight() + songNameJLabel.getHeight()
+						+ tipLabel.getHeight(), width - 1 * 2, height
 						- (titlePanel.getHeight() + songNameJLabel.getHeight())
-						- lH - 1);
+						- lH - lH / 2 - 1);
 
 		// 底部面板
 		JPanel bottomPanel = new JPanel();
@@ -158,11 +168,11 @@ public class MadeTranslateLrcDialog extends JDialog {
 		bottomPanel.setBackground(new Color(240, 240, 240));
 		//
 		int bHSize = bottomPanel.getHeight() / 2;
-		int bWSize = bHSize * 4;
+		int bWSize = bHSize * 4 * 2;
 		int y = (bottomPanel.getHeight() - bHSize) / 2;
 
 		DefButton finishButton = new DefButton(bWSize, bHSize);
-		finishButton.setText("保存");
+		finishButton.setText("保存并使用");
 		finishButton.setBounds(bottomPanel.getWidth() - rightPad - bWSize, y,
 				bWSize, bHSize);
 		finishButton.addActionListener(new ActionListener() {
@@ -190,6 +200,7 @@ public class MadeTranslateLrcDialog extends JDialog {
 
 		this.getContentPane().add(titlePanel);
 		this.getContentPane().add(songNameJLabel);
+		this.getContentPane().add(tipLabel);
 		this.getContentPane().add(translateLrcPanel);
 		this.getContentPane().add(bottomPanel);
 	}
@@ -226,7 +237,8 @@ public class MadeTranslateLrcDialog extends JDialog {
 
 					// 通知
 					MessageIntent messageIntent = new MessageIntent();
-					messageIntent.setAction(MessageIntent.CLOSE_MADETRANSLATELRCDIALOG);
+					messageIntent
+							.setAction(MessageIntent.CLOSE_MADETRANSLATELRCDIALOG);
 					ObserverManage.getObserver().setMessage(messageIntent);
 
 					close();

@@ -9,12 +9,10 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-import com.happy.common.Constants;
 import com.happy.lyrics.model.LyricsLineInfo;
 import com.happy.model.LrcEventIntent;
 import com.happy.observable.ObserverManage;
@@ -56,10 +54,6 @@ public class LrcComPanel extends JPanel {
 	private String[] lrcComTexts;
 
 	private MakeLrcZhiZuoPanel makeLrcZhiZuoPanel;
-	/**
-	 * 统一字体路径
-	 */
-	String fontFilePath = Constants.PATH_FONTS + File.separator + "方正黑体简体.TTF";
 	/**
 	 * 内容面板
 	 */
@@ -108,8 +102,7 @@ public class LrcComPanel extends JPanel {
 		}
 
 		this.addMouseListener(panelMouseListener);
-		baseFont = FontsUtil.getFontByFile(fontFilePath, Font.BOLD,
-				(int) height / 2);
+		baseFont = FontsUtil.getBaseFont((int) height / 2).deriveFont(Font.BOLD, (int) height / 2);
 	}
 
 	@Override

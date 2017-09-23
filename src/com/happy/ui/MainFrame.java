@@ -19,6 +19,7 @@ import com.happy.event.PanelMoveFrame;
 import com.happy.logger.LoggerManage;
 import com.happy.manage.MadeLrcDialogManage;
 import com.happy.manage.MadeTranslateLrcDialogManage;
+import com.happy.manage.MadeTransliterationLrcDialogManage;
 import com.happy.manage.MediaManage;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
@@ -227,6 +228,12 @@ public class MainFrame extends JFrame implements Observer {
 			} else if (messageIntent.getAction().equals(
 					MessageIntent.CLOSE_MADETRANSLATELRCDIALOG)) {
 				hideMadeTranslateLrcDialog();
+			} else if (messageIntent.getAction().equals(
+					MessageIntent.OPEN_MADETRANSLITERATIONLRCDIALOG)) {
+				openMakeTransliterationLrcDialog();
+			} else if (messageIntent.getAction().equals(
+					MessageIntent.CLOSE_MADETRANSLITERATIONLRCDIALOG)) {
+				hideMadeTransliterationLrcDialog();
 			}
 		} else if (data instanceof SongMessage) {
 			SongMessage songMessage = (SongMessage) data;
@@ -238,6 +245,35 @@ public class MainFrame extends JFrame implements Observer {
 
 			}
 		}
+	}
+
+	/**
+	 * 关闭音译歌词
+	 */
+	private void hideMadeTransliterationLrcDialog() {
+		MadeTransliterationLrcDialogManage.hideMadeTransliterationLrcDialog();
+
+	}
+
+	/**
+	 * 打开音译歌词
+	 */
+	private void openMakeTransliterationLrcDialog() {
+
+		this.setExtendedState(Frame.ICONIFIED);
+
+		MadeTransliterationLrcDialogManage.initMadeTransliterationLrcDialog();
+
+		int x = this.getX()
+				+ (this.getWidth() - MadeTransliterationLrcDialogManage
+						.getWidth()) / 2;
+		int y = this.getY()
+				+ (this.getHeight() - MadeTransliterationLrcDialogManage
+						.getHeight()) / 2;
+
+		MadeTransliterationLrcDialogManage.showMadeTransliterationLrcDialog(x,
+				y);
+
 	}
 
 	/**

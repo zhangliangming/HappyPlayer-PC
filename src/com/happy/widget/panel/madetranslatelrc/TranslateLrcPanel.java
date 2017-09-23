@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import com.happy.common.BaseData;
+import com.happy.lyrics.model.LyricsInfo;
 import com.happy.lyrics.model.LyricsLineInfo;
 import com.happy.lyrics.model.TranslateLrcLineInfo;
 import com.happy.lyrics.model.TranslateLyricsInfo;
@@ -102,9 +103,9 @@ public class TranslateLrcPanel extends JPanel {
 			if (lyricsParserUtil != null
 					&& lyricsParserUtil.getLyricsLineTreeMap() != null
 					&& lyricsParserUtil.getLyricsLineTreeMap().size() > 0) {
-				TreeMap<Integer, LyricsLineInfo> lyricsLineInfos = lyricsParserUtil
-						.getLyricsLineTreeMap();
-				refreshUI(lyricsLineInfos);
+
+				// 更新ui
+				refreshUI(lyricsParserUtil.getLyricsIfno());
 			}
 		}
 	}
@@ -114,13 +115,26 @@ public class TranslateLrcPanel extends JPanel {
 	 * 
 	 * @param lyricsLineInfos
 	 */
-	private void refreshUI(TreeMap<Integer, LyricsLineInfo> lyricsLineInfos) {
+	private void refreshUI(LyricsInfo lyricsInfo) {
+
+		TreeMap<Integer, LyricsLineInfo> lyricsLineInfos = lyricsInfo
+				.getLyricsLineInfoTreeMap();
+		TranslateLyricsInfo translateLyricsInfo = lyricsInfo
+				.getTranslateLyricsInfo();
 
 		for (int i = 0; i < lyricsLineInfos.size(); i++) {
 
 			LyricsLineInfo lyricsLineInfo = lyricsLineInfos.get(i);
+			TranslateLrcLineInfo translateLrcLineInfo = null;
+			if (translateLyricsInfo != null
+					&& translateLyricsInfo.getTranslateLrcLineInfos() != null
+					&& translateLyricsInfo.getTranslateLrcLineInfos().size() > 0) {
+				translateLrcLineInfo = translateLyricsInfo
+						.getTranslateLrcLineInfos().get(i);
+			}
+
 			TranslateLrcComPanel translateLrcComPanel = new TranslateLrcComPanel(
-					mWidth, lyricsLineInfo);
+					mWidth, lyricsLineInfo, translateLrcLineInfo);
 			listViewPanel.add(translateLrcComPanel);
 
 		}

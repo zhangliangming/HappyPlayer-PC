@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import com.happy.common.Constants;
 import com.happy.ui.MainFrame;
+import com.happy.util.FontsUtil;
 import com.happy.widget.button.ImageButton;
 
 /**
@@ -81,7 +82,7 @@ public class MainMenuPanel extends JPanel {
 		int mTitleLaberX = padding * 2;
 		int mTitleLaberY = (mHeight - mTitleLaberHeight) / 2;
 		JLabel titleLabel = new JLabel();
-		titleLabel.setFont(new Font("微软雅黑", Font.PLAIN, mTitleLaberHeight));
+		titleLabel.setFont(FontsUtil.getBaseFont(mTitleLaberHeight));
 		titleLabel.setText(Constants.APPTITLEANDYEAR);
 		titleLabel.setForeground(Color.white);
 		titleLabel.setBounds(mTitleLaberX, mTitleLaberY, mTitleLaberWidth,

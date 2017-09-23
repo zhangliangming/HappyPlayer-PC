@@ -54,7 +54,7 @@ public class EnterProgram {
 		DataUtil.init();
 		// 初始化播放器服务
 		MediaPlayerService.getMediaPlayerService().init();
-		// 统一字体
+	
 		initGlobalFont(FontsUtil.getBaseFont(BaseData.appFontSize));
 		// 启动主界面
 		new MainFrame();

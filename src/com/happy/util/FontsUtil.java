@@ -3,6 +3,8 @@ package com.happy.util;
 import java.awt.Font;
 import java.io.File;
 
+import com.happy.common.Constants;
+
 /**
  * 字体处理类
  * 
@@ -10,6 +12,9 @@ import java.io.File;
  * 
  */
 public class FontsUtil {
+	public static String fontFilePath = Constants.PATH_FONTS + File.separator
+			+ "Arial-Unicode-Regular.ttf";
+
 	/**
 	 * 根据字体文件获取字体
 	 * 
@@ -44,6 +49,6 @@ public class FontsUtil {
 	 * @return
 	 */
 	public static Font getBaseFont(int fontSize) {
-		return new Font("微软雅黑", Font.PLAIN, fontSize);
+		return getFontByFile(fontFilePath, Font.PLAIN, fontSize);
 	}
 }

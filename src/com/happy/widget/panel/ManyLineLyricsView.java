@@ -30,6 +30,7 @@ import com.happy.lyrics.utils.TimeUtils;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
+import com.happy.util.FontsUtil;
 import com.happy.util.LyricsParserUtil;
 
 /**
@@ -183,9 +184,9 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	private MetaDownListener metaDownListener;
 
 	/**
-	 * 是否移除鼠标事件
+	 * 基本字体
 	 */
-	// private boolean isRemoveListener = false;
+	private Font baseFont;
 
 	public ManyLineLyricsView(int width, int height, boolean hasLrcEvent) {
 		this.width = width;
@@ -194,6 +195,8 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 		shadeHeight = height / 4;
 		//
 		dAlphaValue = shadeHeight / (maxAlphaValue - minAlphaValue);
+		baseFont = FontsUtil.getBaseFont(BaseData.appFontSize);
+
 		initSizeWord();
 		initColor();
 		ObserverManage.getObserver().addObserver(this);
@@ -262,7 +265,7 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	 * @param g2d
 	 */
 	private void drawTimeLine(Graphics2D g2d) {
-		g2d.setFont(new Font("宋体", Font.BOLD, SIZEWORDHL));
+		g2d.setFont(baseFont.deriveFont( Font.BOLD, SIZEWORDHL));
 		String timeStr = TimeUtils.parseString(progress);
 
 		FontMetrics fm = g2d.getFontMetrics();
@@ -282,7 +285,7 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 	 */
 	private void drawDefText(Graphics2D g2d) {
 		String tip = Constants.APPTIPTITLE;
-		g2d.setFont(new Font("宋体", Font.BOLD, SIZEWORDHL));
+		g2d.setFont(baseFont.deriveFont( Font.BOLD, SIZEWORDHL));
 		g2d.setPaint(paintHLDEF);
 
 		FontMetrics fm = g2d.getFontMetrics();
@@ -322,9 +325,9 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 				// 因为有缩放效果，有需要动态设置歌词的字体大小
 				float textSize = SIZEWORDHL - (SIZEWORDHL - SCALEIZEWORDDEF)
 						* mCurFraction;
-				g2d.setFont(new Font("宋体", Font.BOLD, (int) textSize));
+				g2d.setFont(baseFont.deriveFont( Font.BOLD, (int) textSize));
 			} else {// 画其他的歌词
-				g2d.setFont(new Font("宋体", Font.BOLD, (int) SCALEIZEWORDDEF));
+				g2d.setFont(baseFont.deriveFont( Font.BOLD, (int) SCALEIZEWORDDEF));
 			}
 
 			String text = lyricsLineTreeMap.get(i).getLineLyrics();
@@ -365,9 +368,9 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 				// 因为有缩放效果，有需要动态设置歌词的字体大小
 				float textSize = SIZEWORDHL - (SIZEWORDHL - SCALEIZEWORDDEF)
 						* mCurFraction;
-				g2d.setFont(new Font("宋体", Font.BOLD, (int) textSize));
+				g2d.setFont(baseFont.deriveFont( Font.BOLD, (int) textSize));
 			} else {// 画其他的歌词
-				g2d.setFont(new Font("宋体", Font.BOLD, (int) SCALEIZEWORDDEF));
+				g2d.setFont(baseFont.deriveFont( Font.BOLD, (int) SCALEIZEWORDDEF));
 			}
 
 			String text = lyricsLineTreeMap.get(i).getLineLyrics();
@@ -403,7 +406,7 @@ public class ManyLineLyricsView extends JPanel implements Observer {
 			float textSize = SCALEIZEWORDDEF + (SIZEWORDHL - SCALEIZEWORDDEF)
 					* mCurFraction;
 
-			g2d.setFont(new Font("宋体", Font.BOLD, (int) textSize));
+			g2d.setFont(baseFont.deriveFont( Font.BOLD, (int) textSize));
 
 			LyricsLineInfo kscLyricsLineInfo = lyricsLineTreeMap
 					.get(lyricsLineNum);

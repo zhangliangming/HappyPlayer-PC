@@ -127,7 +127,8 @@ public class FloatLyricsView extends JPanel implements Observer {
 	private MouseInputListener desLrcDialogMouseListener;
 
 	// 统一字体
-	String fontFilePath = Constants.PATH_FONTS + File.separator + "方正黑体简体.TTF";
+	String fontFilePath = Constants.PATH_FONTS + File.separator
+			+ "Arial-Unicode-Bold.ttf";
 	/**
 	 * 字体
 	 */

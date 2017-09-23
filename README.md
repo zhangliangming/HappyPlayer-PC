@@ -1,8 +1,12 @@
 # 更新日志 #
+- 2017-09-24：添加音译歌词功能（暂时不支持预览，有兴趣可到下面的链接查看android版本的播放器）。
+- 2017-09-23：添加多国语言字体支持，方便制作其他语言的歌词和显示其他语言的歌词
+- 2017-09-20：添加生成翻译歌词功能。（暂时不支持翻译歌词预览，有兴趣可到下面的链接查看android版本的播放器）
 - 2017-09-20：因为读取歌词的时候，将歌词格式编码都设置为utf-8,所以解析之前的歌词时，会造成乱码问题，到时有乱码，只要将utf-8编码修改一下即可。
 - 2017-09-20：基于krc歌词，研究和生成新的hrcs歌词格式，支持翻译歌词和音译歌词。
-- 2017-09-20：添加生成翻译歌词功能。（暂时不支持翻译歌词预览，有兴趣可到下面的链接查看android版本的播放器，该播放器已经实现和支持翻译歌词和音译歌词）
-- android版本播放器链接：https://github.com/zhangliangming/HappyPlayer5.git
+# android版本播放器 #
+该版本播放器已经实现和支持翻译歌词和音译歌词。链接：https://github.com/zhangliangming/HappyPlayer5.git
+
 # HappyPlayer-PC
 #1.音频解码器
   对musique 播放器的解码器进行优化和修改，这里我将它项目使用到的核心解码代码，
@@ -37,18 +41,15 @@ hrc歌词的优化
 - 标题栏：MainMenuPanel
 - 中间界面：MainCenterPanel
 - 底部界面：MainOperatePanel
-- 中间界面
-X轴的BoxLayout，方便点击可隐藏/展开
-
-
+- 中间界面：X轴的BoxLayout，方便点击可隐藏/展开
 - 播放列表面板：SongListPanel
 - 列表Item面板：
 - 列表标题栏面板：
 - 列表下的歌曲列表内容面板：
 - 列表下的歌曲列表Item面板：
 - 歌词面板：LyricsPanel
-多行歌词面板：ManyLineLyricsView
-桌面歌词面板
+- 多行歌词面板：ManyLineLyricsView
+- 桌面歌词面板
 
 #4.参考博客
 
@@ -62,5 +63,22 @@ X轴的BoxLayout，方便点击可隐藏/展开
 
 ![](http://i.imgur.com/N1QDJoE.jpg)
 
-#博客地址
+![](https://i.imgur.com/5DqmxSg.png)
+
+![](https://i.imgur.com/Ca3PZnB.png)
+
+![](https://i.imgur.com/3ngktqS.png)
+
+![](https://i.imgur.com/N4H0mrw.png)
+
+![](https://i.imgur.com/XUPYjpe.png)
+
+![](https://i.imgur.com/qq2psvM.png)
+
+![](https://i.imgur.com/ObVuEp7.png)
+
+![](https://i.imgur.com/Hr7NtgA.png)
+
+
+#6.博客地址
 http://zhangliangming.github.io/
