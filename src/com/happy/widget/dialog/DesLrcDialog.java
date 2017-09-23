@@ -140,6 +140,7 @@ public class DesLrcDialog extends JDialog implements Observer {
 		} else {
 			desOperatePanel.setVisible(false);
 			floatLyricsView.setShow(false);
+			desOperatePanel.repaint();
 		}
 
 	}

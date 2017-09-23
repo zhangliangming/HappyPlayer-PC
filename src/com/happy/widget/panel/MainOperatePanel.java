@@ -273,6 +273,7 @@ public class MainOperatePanel extends JPanel implements Observer {
 		unShowDesktopLyricsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BaseData.showDesktopLyrics = true;
+				BaseData.desLrcIsLock = false;
 				initDesktopLrc();
 
 				MessageIntent messageIntent = new MessageIntent();
