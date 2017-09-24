@@ -508,12 +508,12 @@ public class MakeLrcZhiZuoPanel extends JPanel implements Observer {
 			char c = lrcComTxt.charAt(i);
 			if (CharUtils.isChinese(c) || CharUtils.isHangulSyllables(c)
 					|| CharUtils.isHiragana(c)) {
-				
+
 				if (!temp.equals("")) {
 					lrcStack.push(temp);
 					temp = "";
 				}
-				
+
 				lrcStack.push(String.valueOf(c));
 			} else if (Character.isSpaceChar(c)) {
 				if (!temp.equals("")) {
@@ -522,7 +522,7 @@ public class MakeLrcZhiZuoPanel extends JPanel implements Observer {
 				}
 				String tw = lrcStack.pop();
 				if (tw != null) {
-					lrcStack.push("[" + tw + " " + "]");
+					lrcStack.push("" + tw + " " + "");
 				}
 			} else {
 				temp += String.valueOf(c);
@@ -530,7 +530,7 @@ public class MakeLrcZhiZuoPanel extends JPanel implements Observer {
 		}
 		//
 		if (!temp.equals("")) {
-			lrcStack.push("[" + temp + "]");
+			lrcStack.push("" + temp + "");
 			temp = "";
 		}
 		String newLrc = "";
@@ -538,16 +538,7 @@ public class MakeLrcZhiZuoPanel extends JPanel implements Observer {
 		Iterator<String> it = lrcStack.iterator();
 		int i = 0;
 		while (it.hasNext()) {
-			String com = it.next();
-			String tempCom = "";
-			for (int j = 0; j < com.length(); j++) {
-				char reg = com.charAt(j);
-				if (reg == '[')
-					continue;
-				if (reg == ']')
-					continue;
-				tempCom += reg;
-			}
+			String tempCom = it.next();
 			lyricsWords[i++] = tempCom;
 			newLrc += tempCom;
 		}

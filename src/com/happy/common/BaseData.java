@@ -90,19 +90,20 @@ public class BaseData {
 	 * 歌词大小
 	 */
 	public static int lrcFontSize = lrcFontMinSize;
-	
+
 	/**
 	 * 字休大小提示
 	 */
-	public static String[] lrcSizeTip = new String[] { "最大", "较大", "中等", "较小", "最小" };
+	public static String[] lrcSizeTip = new String[] { "最大", "较大", "中等", "较小",
+			"最小" };
 	/**
 	 * 桌面歌词最小大小
 	 */
-	public static int desktopLrcFontMinSize = 250;
+	public static int desktopLrcFontMinSize = 0;
 	/**
 	 * 桌面歌词最大大小
 	 */
-	public static int desktopLrcFontMaxSize = 300;
+	public static int desktopLrcFontMaxSize = 0;
 	/**
 	 * 桌面歌词大小
 	 */

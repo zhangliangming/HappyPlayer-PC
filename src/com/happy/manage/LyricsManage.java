@@ -2,7 +2,7 @@ package com.happy.manage;
 
 import java.io.File;
 
-import com.happy.util.LyricsParserUtil;
+import com.happy.util.LyricsUtil;
 
 /**
  * 歌词处理类
@@ -20,7 +20,7 @@ public class LyricsManage {
 	/**
 	 * 当前歌词解析器
 	 */
-	private static LyricsParserUtil lyricsParser = null;
+	private static LyricsUtil mLyricsUtil = null;
 
 	/**
 	 * 通过歌曲的sid和歌词路径获取歌词解析器
@@ -29,26 +29,27 @@ public class LyricsManage {
 	 * @param lrcFilePath
 	 * @return
 	 */
-	public static LyricsParserUtil getLyricsParser(String sid, File lrcFile) {
+	public static LyricsUtil getLyricsParser(String sid, File lrcFile) {
 		if (sid.equals(mSid)) {
-			if (lyricsParser == null) {
-				lyricsParser = new LyricsParserUtil(lrcFile);
+			if (mLyricsUtil == null) {
+				mLyricsUtil = new LyricsUtil(lrcFile);
 			}
 		} else {
 			mSid = sid;
-			lyricsParser = new LyricsParserUtil(lrcFile);
+			mLyricsUtil = new LyricsUtil(lrcFile);
 		}
-		return lyricsParser;
+		return mLyricsUtil;
 	}
 
 	/**
 	 * 获取歌词解析
+	 * 
 	 * @param sid
 	 * @return
 	 */
-	public static LyricsParserUtil getLyricsParser(String sid) {
+	public static LyricsUtil getLyricsParser(String sid) {
 		if (sid.equals(mSid)) {
-			return lyricsParser;
+			return mLyricsUtil;
 		}
 		return null;
 	}
@@ -59,23 +60,23 @@ public class LyricsManage {
 	 * @param lrcInputStream
 	 * @return
 	 */
-	public static LyricsParserUtil getKscLyricsParserByInputStream(String sid) {
+	public static LyricsUtil getKscLyricsParserByInputStream(String sid) {
 		if (sid.equals(mSid)) {
-			if (lyricsParser == null) {
-				lyricsParser = new LyricsParserUtil();
+			if (mLyricsUtil == null) {
+				mLyricsUtil = new LyricsUtil();
 			}
 		} else {
 			mSid = sid;
-			lyricsParser = new LyricsParserUtil();
+			mLyricsUtil = new LyricsUtil();
 
 		}
-		return lyricsParser;
+		return mLyricsUtil;
 	}
 
 	/**
 	 * 清空数据
 	 */
 	public static void clean() {
-		lyricsParser = null;
+		mLyricsUtil = null;
 	}
 }

@@ -15,8 +15,11 @@ import com.happy.model.MessageIntent;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
 import com.happy.widget.button.DesOperateButton;
+import com.happy.widget.dialog.DesLrcDialog;
 import com.happy.widget.label.DesOperateLabel;
 import com.happy.widget.panel.des.DesLrcColorParentPanel.DesLrcEvent;
+import com.happy.widget.panel.lrc.FloatLyricsView;
+import com.happy.widget.panel.lrc.FloatLyricsView.ExtraLyricsListener;
 
 /**
  * 桌面操作面板
@@ -72,6 +75,7 @@ public class DesOperatePanel extends JPanel {
 	 * 桌面窗口事件
 	 */
 	private MouseInputListener desLrcDialogMouseListener;
+	private DesLrcDialog mDesLrcDialog;
 
 	private MouseListener mouseListener = new MouseListener();
 
@@ -80,8 +84,22 @@ public class DesOperatePanel extends JPanel {
 	 */
 	private int lrcColorIndex = BaseData.desktopLrcIndex;
 
+	// 翻译歌词
+	private DesOperateButton mNoTranslateBtn;
+	private DesOperateButton mHideTranslateBtn;
+	private DesOperateButton mShowTranslateBtn;
+	// 音译歌词
+	private DesOperateButton mNoTransliterationBtn;
+	private DesOperateButton mHideTransliterationBtn;
+	private DesOperateButton mShowTransliterationBtn;
+
+	//
+	private ExtraLyricsListener mExtraLyricsListener;
+
 	public DesOperatePanel(int width, int height,
-			MouseInputListener desLrcDialogMouseListener) {
+			MouseInputListener desLrcDialogMouseListener,
+			DesLrcDialog desLrcDialog) {
+		this.mDesLrcDialog = desLrcDialog;
 		this.desLrcDialogMouseListener = desLrcDialogMouseListener;
 		this.mWidth = width;
 		this.mHeight = height;
@@ -89,6 +107,61 @@ public class DesOperatePanel extends JPanel {
 		initComponent();
 		initLockEvent();
 
+		//
+		mExtraLyricsListener = new ExtraLyricsListener() {
+
+			@Override
+			public void noExtraLrcCallback() {
+				// 翻译歌词
+				mNoTranslateBtn.setVisible(true);
+				mHideTranslateBtn.setVisible(false);
+				mShowTranslateBtn.setVisible(false);
+				// 音译歌词
+				mNoTransliterationBtn.setVisible(true);
+				mHideTransliterationBtn.setVisible(false);
+				mShowTransliterationBtn.setVisible(false);
+			}
+
+			@Override
+			public void hasTransliterationLrcCallback() {
+				// 翻译歌词
+				mNoTranslateBtn.setVisible(true);
+				mHideTranslateBtn.setVisible(false);
+				mShowTranslateBtn.setVisible(false);
+				// 音译歌词
+				mNoTransliterationBtn.setVisible(false);
+				mHideTransliterationBtn.setVisible(false);
+				mShowTransliterationBtn.setVisible(true);
+
+			}
+
+			@Override
+			public void hasTranslateLrcCallback() {
+				// 翻译歌词
+				mNoTranslateBtn.setVisible(false);
+				mHideTranslateBtn.setVisible(false);
+				mShowTranslateBtn.setVisible(true);
+				// 音译歌词
+				mNoTransliterationBtn.setVisible(true);
+				mHideTransliterationBtn.setVisible(false);
+				mShowTransliterationBtn.setVisible(false);
+
+			}
+
+			@Override
+			public void hasTranslateAndTransliterationLrcCallback() {
+				// 翻译歌词
+				mNoTranslateBtn.setVisible(false);
+				mHideTranslateBtn.setVisible(false);
+				mShowTranslateBtn.setVisible(true);
+				// 音译歌词
+				mNoTransliterationBtn.setVisible(false);
+				mHideTransliterationBtn.setVisible(false);
+				mShowTransliterationBtn.setVisible(true);
+
+			}
+		};
+		mExtraLyricsListener.noExtraLrcCallback();
 	}
 
 	private void initLockEvent() {
@@ -245,20 +318,8 @@ public class DesOperatePanel extends JPanel {
 						fontSize = BaseData.desktopLrcFontMaxSize;
 				}
 				BaseData.desktopLrcFontSize = fontSize;
-
-				new Thread() {
-
-					@Override
-					public void run() {
-
-						MessageIntent messageIntent = new MessageIntent();
-						messageIntent
-								.setAction(MessageIntent.DESMANYLINEFONTSIZE);
-						ObserverManage.getObserver().setMessage(messageIntent);
-
-					}
-
-				}.start();
+				// 更新歌词大小
+				mDesLrcDialog.getFloatLyricsView().refreshLrcFontSize();
 			}
 		});
 
@@ -290,20 +351,8 @@ public class DesOperatePanel extends JPanel {
 						fontSize = BaseData.desktopLrcFontMinSize;
 				}
 				BaseData.desktopLrcFontSize = fontSize;
-
-				new Thread() {
-
-					@Override
-					public void run() {
-
-						MessageIntent messageIntent = new MessageIntent();
-						messageIntent
-								.setAction(MessageIntent.DESMANYLINEFONTSIZE);
-						ObserverManage.getObserver().setMessage(messageIntent);
-
-					}
-
-				}.start();
+				// 更新歌词大小
+				mDesLrcDialog.getFloatLyricsView().refreshLrcFontSize();
 			}
 
 		});
@@ -324,6 +373,120 @@ public class DesOperatePanel extends JPanel {
 
 		lrcColorPanels[lrcColorIndex].setSelect(true);
 
+		// 翻译歌词
+		// 无翻译歌词
+		mNoTranslateBtn = new DesOperateButton(iconPath + "bqm.png", iconPath
+				+ "bqm.png", iconPath + "bqm.png", buttonSize - padding / 2,
+				buttonSize - padding / 2, desLrcDialogMouseListener, this);
+		mNoTranslateBtn.setBounds(x, 0, buttonSize, buttonSize);
+		mNoTranslateBtn.setToolTipText("无翻译歌词");
+
+		// 隐藏翻译歌词
+		mHideTranslateBtn = new DesOperateButton(iconPath + "bql.png", iconPath
+				+ "bql.png", iconPath + "bql.png", buttonSize - padding / 2,
+				buttonSize - padding / 2, desLrcDialogMouseListener, this);
+		mHideTranslateBtn.setBounds(x, 0, buttonSize, buttonSize);
+		mHideTranslateBtn.setToolTipText("隐藏翻译歌词");
+		mHideTranslateBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mHideTranslateBtn.setVisible(false);
+				mShowTranslateBtn.setVisible(true);
+
+				mDesLrcDialog.getFloatLyricsView().setExtraLrcStatus(
+						FloatLyricsView.NOSHOWEXTRALRC);
+			}
+		});
+
+		// 显示翻译歌词
+		mShowTranslateBtn = new DesOperateButton(iconPath + "bqm1.png",
+				iconPath + "bqm1.png", iconPath + "bqm1.png", buttonSize
+						- padding / 2, buttonSize - padding / 2,
+				desLrcDialogMouseListener, this);
+		mShowTranslateBtn.setBounds(x, 0, buttonSize, buttonSize);
+		mShowTranslateBtn.setToolTipText("显示翻译歌词");
+		mShowTranslateBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// 翻译歌词
+				mHideTranslateBtn.setVisible(true);
+				mShowTranslateBtn.setVisible(false);
+				// 音译歌词
+				if (!mNoTransliterationBtn.isVisible()) {
+					mHideTransliterationBtn.setVisible(false);
+					mShowTransliterationBtn.setVisible(true);
+				}
+				mDesLrcDialog.getFloatLyricsView().setExtraLrcStatus(
+						FloatLyricsView.SHOWTRANSLATELRC);
+
+			}
+		});
+
+		// 音译歌词
+		int htbX = mHideTranslateBtn.getX() + mHideTranslateBtn.getWidth()
+				+ padding;
+		// 无音译歌词
+		mNoTransliterationBtn = new DesOperateButton(iconPath + "bqo.png",
+				iconPath + "bqo.png", iconPath + "bqo.png", buttonSize
+						- padding / 2, buttonSize - padding / 2,
+				desLrcDialogMouseListener, this);
+		mNoTransliterationBtn.setBounds(htbX, 0, buttonSize, buttonSize);
+		mNoTransliterationBtn.setToolTipText("无音译歌词");
+
+		// 隐藏音译歌词
+		mHideTransliterationBtn = new DesOperateButton(iconPath + "bqn.png",
+				iconPath + "bqn.png", iconPath + "bqn.png", buttonSize
+						- padding / 2, buttonSize - padding / 2,
+				desLrcDialogMouseListener, this);
+		mHideTransliterationBtn.setBounds(htbX, 0, buttonSize, buttonSize);
+		mHideTransliterationBtn.setToolTipText("隐藏音译歌词");
+		mHideTransliterationBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// 音译歌词
+				mHideTransliterationBtn.setVisible(false);
+				mShowTransliterationBtn.setVisible(true);
+
+				mDesLrcDialog.getFloatLyricsView().setExtraLrcStatus(
+						FloatLyricsView.NOSHOWEXTRALRC);
+
+			}
+		});
+
+		// 显示音译歌词
+		mShowTransliterationBtn = new DesOperateButton(iconPath + "bqo1.png",
+				iconPath + "bqo1.png", iconPath + "bqo1.png", buttonSize
+						- padding / 2, buttonSize - padding / 2,
+				desLrcDialogMouseListener, this);
+		mShowTransliterationBtn.setBounds(htbX, 0, buttonSize, buttonSize);
+		mShowTransliterationBtn.setToolTipText("显示音译歌词");
+		mShowTransliterationBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// 音译歌词
+				mHideTransliterationBtn.setVisible(true);
+				mShowTransliterationBtn.setVisible(false);
+
+				// 翻译歌词
+				if (!mNoTranslateBtn.isVisible()) {
+					mHideTranslateBtn.setVisible(false);
+					mShowTranslateBtn.setVisible(true);
+				}
+
+				mDesLrcDialog.getFloatLyricsView().setExtraLrcStatus(
+						FloatLyricsView.SHOWTRANSLITERATIONLRC);
+
+			}
+		});
+
+		int mlbX = mHideTransliterationBtn.getX()
+				+ mHideTransliterationBtn.getWidth() + padding;
 		// 制作歌词
 		String makeLrcButtonBaseIconPath = iconPath + "desMakeLrc_def.png";
 		String makeLrcButtonOverIconPath = iconPath + "desMakeLrc_rollover.png";
@@ -334,7 +497,7 @@ public class DesOperatePanel extends JPanel {
 				makeLrcButtonBaseIconPath, makeLrcButtonOverIconPath,
 				makeLrcButtonPressedIconPath, buttonSize * 2, buttonSize,
 				mouseListener, this, true);
-		makeLrcButton.setBounds(x, 0, buttonSize * 2, buttonSize);
+		makeLrcButton.setBounds(mlbX, 0, buttonSize * 2, buttonSize);
 		makeLrcButton.setToolTipText("制作歌词");
 		makeLrcButton.addActionListener(new ActionListener() {
 
@@ -424,10 +587,20 @@ public class DesOperatePanel extends JPanel {
 		this.add(nextButton);
 		this.add(increaseButton);
 		this.add(decreaseButton);
+		this.add(mNoTranslateBtn);
+		this.add(mShowTranslateBtn);
+		this.add(mHideTranslateBtn);
+		this.add(mHideTransliterationBtn);
+		this.add(mShowTransliterationBtn);
+		this.add(mNoTransliterationBtn);
 		this.add(makeLrcButton);
 		this.add(lockButton);
 		this.add(closeButton);
 		this.add(bgl);
+	}
+
+	public ExtraLyricsListener getExtraLyricsListener() {
+		return mExtraLyricsListener;
 	}
 
 	private DesLrcEvent lrcEvent = new DesLrcEvent() {

@@ -79,7 +79,7 @@ public class MainCenterPanel extends JPanel {
 				songListPanel.setVisible(false);
 				hideButton.setVisible(false);
 				//
-				lyricsPanel.getManyLineLyricsView().setWidth(mWidth);
+//				lyricsPanel.getManyLineLyricsView().setWidth(mWidth);
 			}
 		});
 
@@ -96,8 +96,8 @@ public class MainCenterPanel extends JPanel {
 				showButton.setVisible(false);
 				songListPanel.setVisible(true);
 				//
-				lyricsPanel.getManyLineLyricsView().setWidth(
-						mWidth - slPanelWidth);
+//				lyricsPanel.getManyLineLyricsView().setWidth(
+//						mWidth - slPanelWidth);
 			}
 		});
 		showButton.setVisible(false);

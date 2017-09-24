@@ -15,8 +15,8 @@ import javax.swing.event.MouseInputListener;
 import com.happy.common.BaseData;
 import com.happy.model.MessageIntent;
 import com.happy.observable.ObserverManage;
-import com.happy.widget.panel.FloatLyricsView;
 import com.happy.widget.panel.des.DesOperatePanel;
+import com.happy.widget.panel.lrc.FloatLyricsView;
 import com.sun.awt.AWTUtilities;
 
 /**
@@ -93,15 +93,24 @@ public class DesLrcDialog extends JDialog implements Observer {
 	private void initComponent() {
 		this.getContentPane().setLayout(null);
 
-		int width = mHeight / 5 * 15 + 10 * 15;
+		int width = mHeight / 5 * 17 + 10 * 17;
 
 		desOperatePanel = new DesOperatePanel(width, mHeight / 5,
-				desLrcDialogMouseListener);
+				desLrcDialogMouseListener, this);
 		desOperatePanel.setBounds((mWidth - width) / 2, 0, width, mHeight / 5);
 		desOperatePanel.setVisible(false);
 
+		// 设置字体
+		BaseData.desktopLrcFontMinSize = (mHeight - mHeight / 5) / 4;
+		BaseData.desktopLrcFontMaxSize = (mHeight - mHeight / 5) / 3;
+		if (BaseData.desktopLrcFontSize == 0) {
+			BaseData.desktopLrcFontSize = BaseData.desktopLrcFontMinSize;
+		}
+
 		floatLyricsView = new FloatLyricsView(mWidth, mHeight - mHeight / 5,
 				desLrcDialogMouseListener);
+		floatLyricsView.setExtraLyricsListener(desOperatePanel
+				.getExtraLyricsListener());
 		floatLyricsView.setBounds(0,
 				desOperatePanel.getY() + desOperatePanel.getHeight(), mWidth,
 				mHeight - mHeight / 5);

@@ -28,9 +28,8 @@ import com.happy.manage.MediaManage;
 import com.happy.model.SongInfo;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
-import com.happy.util.LyricsParserUtil;
+import com.happy.util.LyricsUtil;
 import com.happy.widget.button.DefButton;
-import com.happy.widget.panel.ManyLineLyricsView;
 import com.happy.widget.slider.MakeLrcSlider;
 
 /**
@@ -86,12 +85,12 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 	/**
 	 * 歌词内容
 	 */
-	private ManyLineLyricsView manyLineLyricsView;
+//	private ManyLineLyricsView manyLineLyricsView;
 
 	/**
 	 * 歌词解析
 	 */
-	private LyricsParserUtil lyricsParser;
+	private LyricsUtil lyricsParser;
 
 	/**
 	 * 歌词列表
@@ -283,11 +282,11 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 		bg2.setBounds(10, oPanel.getY() + oPanel.getHeight() + padding,
 				width - 16, height - oH - padding);
 		//
-		manyLineLyricsView = new ManyLineLyricsView(width - 16, height - oH
-				- padding, false);
-		manyLineLyricsView.setBounds(10, oPanel.getY() + oPanel.getHeight()
-				+ padding, width - 16, height - oH - padding);
-		this.add(manyLineLyricsView);
+//		manyLineLyricsView = new ManyLineLyricsView(width - 16, height - oH
+//				- padding, false);
+//		manyLineLyricsView.setBounds(10, oPanel.getY() + oPanel.getHeight()
+//				+ padding, width - 16, height - oH - padding);
+//		this.add(manyLineLyricsView);
 		this.add(bg2);
 		this.add(oPanel);
 		this.add(bg);
@@ -312,16 +311,16 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 	public void setLrcData(LyricsInfo lyricsInfo) {
 		this.lyricsInfo = lyricsInfo;
 
-		lyricsParser = new LyricsParserUtil();
+		lyricsParser = new LyricsUtil();
 		lyricsLineTreeMap = lyricsInfo.getLyricsLineInfoTreeMap();
-		lyricsParser.setLyricsLineTreeMap(lyricsLineTreeMap);
+		lyricsParser.setDefLyricsLineTreeMap(lyricsLineTreeMap);
 
-		if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
-			manyLineLyricsView.init(0, lyricsParser);
-			manyLineLyricsView.setHasLrc(true);
-		} else {
-			manyLineLyricsView.setHasLrc(false);
-		}
+//		if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
+//			manyLineLyricsView.init(0, lyricsParser);
+//			manyLineLyricsView.setHasLrc(true);
+//		} else {
+//			manyLineLyricsView.setHasLrc(false);
+//		}
 	}
 
 	public LyricsInfo getLrcData() {
@@ -377,7 +376,7 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 					pauseButton.setVisible(false);
 
 				}
-				manyLineLyricsView.setHasLrc(false);
+//				manyLineLyricsView.setHasLrc(false);
 
 				songSlider.setValue(0);
 				songSlider.setMaximum((int) mSongInfo.getDuration());
@@ -400,12 +399,12 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 									.getDuration()));
 				}
 
-				if (manyLineLyricsView.getHasLrc()
-						&& !manyLineLyricsView.getBlScroll()) {
-
-					manyLineLyricsView.showLrc((int) mSongInfo
-							.getPlayProgress());
-				}
+//				if (manyLineLyricsView.getHasLrc()
+//						&& !manyLineLyricsView.getBlScroll()) {
+//
+//					manyLineLyricsView.showLrc((int) mSongInfo
+//							.getPlayProgress());
+//				}
 
 			} else if (songMessage.getType() == SongMessage.SERVICEPAUSEEDMUSIC
 					|| songMessage.getType() == SongMessage.SERVICESTOPEDMUSIC) {
@@ -418,17 +417,17 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 						+ "/"
 						+ TimeUtils.parseString((int) mSongInfo.getDuration()));
 
-				if (manyLineLyricsView.getHasLrc()
-						&& !manyLineLyricsView.getBlScroll()) {
-
-					manyLineLyricsView.showLrc((int) mSongInfo
-							.getPlayProgress());
-				}
+//				if (manyLineLyricsView.getHasLrc()
+//						&& !manyLineLyricsView.getBlScroll()) {
+//
+//					manyLineLyricsView.showLrc((int) mSongInfo
+//							.getPlayProgress());
+//				}
 			}
 		} else {
 
-			if (manyLineLyricsView != null)
-				manyLineLyricsView.setHasLrc(false);
+//			if (manyLineLyricsView != null)
+//				manyLineLyricsView.setHasLrc(false);
 
 			songSlider.setValue(0);
 			songSlider.setMaximum(0);

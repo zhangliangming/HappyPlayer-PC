@@ -18,7 +18,7 @@ import com.happy.lyrics.model.LyricsLineInfo;
 import com.happy.lyrics.model.TransliterationLyricsInfo;
 import com.happy.manage.LyricsManage;
 import com.happy.model.SongInfo;
-import com.happy.util.LyricsParserUtil;
+import com.happy.util.LyricsUtil;
 import com.happy.util.StringUtils;
 import com.happy.widget.scrollbar.BaseScrollBarUI;
 
@@ -98,11 +98,11 @@ public class TransliterationLrcPanel extends JPanel {
 	 */
 	public void initData(SongInfo songInfo) {
 		if (songInfo != null) {
-			LyricsParserUtil lyricsParserUtil = LyricsManage
-					.getLyricsParser(songInfo.getSid());
+			LyricsUtil lyricsParserUtil = LyricsManage.getLyricsParser(songInfo
+					.getSid());
 			if (lyricsParserUtil != null
-					&& lyricsParserUtil.getLyricsLineTreeMap() != null
-					&& lyricsParserUtil.getLyricsLineTreeMap().size() > 0) {
+					&& lyricsParserUtil.getDefLyricsLineTreeMap() != null
+					&& lyricsParserUtil.getDefLyricsLineTreeMap().size() > 0) {
 
 				// 更新ui
 				refreshUI(lyricsParserUtil.getLyricsIfno());

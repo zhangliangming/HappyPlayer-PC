@@ -3,7 +3,6 @@ package com.happy.widget.panel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
@@ -26,10 +25,8 @@ import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
 import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
-import com.happy.util.LyricsParserUtil;
 import com.happy.util.LyricsUtil;
 import com.happy.widget.dialog.DesLrcDialog;
-import com.happy.widget.panel.ManyLineLyricsView.MetaDownListener;
 
 /**
  * 歌词面板
@@ -44,20 +41,20 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 歌词面板
-	 */
-	private ManyLineLyricsView manyLineLyricsView;
-
-	/**
-	 * 鼠标右键事件
-	 */
-	private MetaDownListener metaDownListener;
+	// /**
+	// * 歌词面板
+	// */
+	// private ManyLineLyricsView manyLineLyricsView;
+	//
+	// /**
+	// * 鼠标右键事件
+	// */
+	// private MetaDownListener metaDownListener;
 
 	/**
 	 * 歌词解析
 	 */
-	private LyricsParserUtil lyricsParser;
+	private LyricsUtil lyricsParser;
 
 	/**
 	 * 歌词列表
@@ -134,21 +131,23 @@ public class LyricsPanel extends JPanel implements Observer {
 					JOptionPane.showMessageDialog(null, "请选择歌曲", "提示",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					LyricsParserUtil lyricsParserUtil = LyricsManage
+					LyricsUtil lyricsParserUtil = LyricsManage
 							.getLyricsParser(songInfo.getSid());
 
 					if (lyricsParserUtil == null
-							|| lyricsParserUtil.getLyricsLineTreeMap() == null
-							|| lyricsParserUtil.getLyricsLineTreeMap().size() == 0) {
+							|| lyricsParserUtil.getDefLyricsLineTreeMap() == null
+							|| lyricsParserUtil.getDefLyricsLineTreeMap()
+									.size() == 0) {
 						JOptionPane.showMessageDialog(null, "请先制作歌曲，然后再制作翻译歌词",
 								"提示", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					
+
 					MessageIntent messageIntent = new MessageIntent();
-					messageIntent.setAction(MessageIntent.OPEN_MADETRANSLATELRCDIALOG);
+					messageIntent
+							.setAction(MessageIntent.OPEN_MADETRANSLATELRCDIALOG);
 					ObserverManage.getObserver().setMessage(messageIntent);
-				
+
 				}
 
 			}
@@ -159,27 +158,29 @@ public class LyricsPanel extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				SongInfo songInfo = MediaManage.getMediaManage().getSongInfo();
 				if (songInfo == null || BaseData.playInfoID.equals("-1")) {
 					JOptionPane.showMessageDialog(null, "请选择歌曲", "提示",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					LyricsParserUtil lyricsParserUtil = LyricsManage
+					LyricsUtil lyricsParserUtil = LyricsManage
 							.getLyricsParser(songInfo.getSid());
 
 					if (lyricsParserUtil == null
-							|| lyricsParserUtil.getLyricsLineTreeMap() == null
-							|| lyricsParserUtil.getLyricsLineTreeMap().size() == 0) {
+							|| lyricsParserUtil.getDefLyricsLineTreeMap() == null
+							|| lyricsParserUtil.getDefLyricsLineTreeMap()
+									.size() == 0) {
 						JOptionPane.showMessageDialog(null, "请先制作歌曲，然后再制作音译歌词",
 								"提示", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					
+
 					MessageIntent messageIntent = new MessageIntent();
-					messageIntent.setAction(MessageIntent.OPEN_MADETRANSLITERATIONLRCDIALOG);
+					messageIntent
+							.setAction(MessageIntent.OPEN_MADETRANSLITERATIONLRCDIALOG);
 					ObserverManage.getObserver().setMessage(messageIntent);
-				
+
 				}
 
 			}
@@ -276,17 +277,17 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private void initComponent(int width, final int height) {
 		this.setLayout(new BorderLayout());
-		manyLineLyricsView = new ManyLineLyricsView(width, height, true);
-
-		metaDownListener = new MetaDownListener() {
-
-			@Override
-			public void MetaDown(MouseEvent e) {
-				menuPop.show(manyLineLyricsView, e.getX(), e.getY());
-			}
-		};
-		manyLineLyricsView.setMetaDownListener(metaDownListener);
-		this.add(manyLineLyricsView, BorderLayout.CENTER);
+		// manyLineLyricsView = new ManyLineLyricsView(width, height, true);
+		//
+		// metaDownListener = new MetaDownListener() {
+		//
+		// @Override
+		// public void MetaDown(MouseEvent e) {
+		// menuPop.show(manyLineLyricsView, e.getX(), e.getY());
+		// }
+		// };
+		// manyLineLyricsView.setMetaDownListener(metaDownListener);
+		// this.add(manyLineLyricsView, BorderLayout.CENTER);
 	}
 
 	@Override
@@ -350,54 +351,56 @@ public class LyricsPanel extends JPanel implements Observer {
 						mSongInfo.getSinger(), mSongInfo.getDisplayName(),
 						mSongInfo.getLyricsUrl(), SongMessage.KSCTYPELRC);
 
-				manyLineLyricsView.setHasLrc(false);
+				// manyLineLyricsView.setHasLrc(false);
 
-				desktopLrcDialog.getFloatLyricsView().setHasLrc(false);
+				desktopLrcDialog.getFloatLyricsView().setLyricsUtil(null);
 
 			} else if (songMessage.getType() == SongMessage.SERVICEPLAYINGMUSIC) {
 
-				if (manyLineLyricsView.getHasLrc()
-						&& !manyLineLyricsView.getBlScroll()) {
+				// if (manyLineLyricsView.getHasLrc()
+				// && !manyLineLyricsView.getBlScroll()) {
+				//
+				// manyLineLyricsView.showLrc((int) mSongInfo
+				// .getPlayProgress());
+				//
+				// }
 
-					manyLineLyricsView.showLrc((int) mSongInfo
-							.getPlayProgress());
-
-				}
-
-				if (desktopLrcDialog.getFloatLyricsView().getHasLrc()) {
-					desktopLrcDialog.getFloatLyricsView().showLrc(
+				if (desktopLrcDialog.getFloatLyricsView()
+						.getLyricsLineTreeMap() != null) {
+					desktopLrcDialog.getFloatLyricsView().updateView(
 							(int) mSongInfo.getPlayProgress());
 				}
 
 			} else if (songMessage.getType() == SongMessage.SERVICEPAUSEEDMUSIC
 					|| songMessage.getType() == SongMessage.SERVICESTOPEDMUSIC) {
 
-				if (manyLineLyricsView.getHasLrc()
-						&& !manyLineLyricsView.getBlScroll()) {
+				// if (manyLineLyricsView.getHasLrc()
+				// && !manyLineLyricsView.getBlScroll()) {
+				//
+				// manyLineLyricsView.showLrc((int) mSongInfo
+				// .getPlayProgress());
+				// }
 
-					manyLineLyricsView.showLrc((int) mSongInfo
-							.getPlayProgress());
-				}
-
-				if (desktopLrcDialog.getFloatLyricsView().getHasLrc()) {
-					desktopLrcDialog.getFloatLyricsView().showLrc(
+				if (desktopLrcDialog.getFloatLyricsView()
+						.getLyricsLineTreeMap() != null) {
+					desktopLrcDialog.getFloatLyricsView().updateView(
 							(int) mSongInfo.getPlayProgress());
 				}
 
 			}
 		} else {
-			if (manyLineLyricsView != null)
-				manyLineLyricsView.setHasLrc(false);
+			// if (manyLineLyricsView != null)
+			// manyLineLyricsView.setHasLrc(false);
 
 			if (desktopLrcDialog.getFloatLyricsView() != null) {
-				desktopLrcDialog.getFloatLyricsView().setHasLrc(false);
+				desktopLrcDialog.getFloatLyricsView().setLyricsUtil(null);
 			}
 		}
 	}
 
-	public ManyLineLyricsView getManyLineLyricsView() {
-		return manyLineLyricsView;
-	}
+	// public ManyLineLyricsView getManyLineLyricsView() {
+	// return manyLineLyricsView;
+	// }
 
 	/**
 	 * 
@@ -423,22 +426,22 @@ public class LyricsPanel extends JPanel implements Observer {
 
 			@Override
 			protected void done() {
-				lyricsLineTreeMap = lyricsParser.getLyricsLineTreeMap();
+				lyricsLineTreeMap = lyricsParser.getDefLyricsLineTreeMap();
 				if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
-					manyLineLyricsView.init((int) duration, lyricsParser);
-					manyLineLyricsView.setHasLrc(true);
+					// manyLineLyricsView.init((int) duration, lyricsParser);
+					// manyLineLyricsView.setHasLrc(true);
+					//
+					// if (mSongInfo != null) {
+					// manyLineLyricsView.showLrc((int) mSongInfo
+					// .getPlayProgress());
+					//
+					// }
+
+					desktopLrcDialog.getFloatLyricsView().setLyricsUtil(
+							lyricsParser);
 
 					if (mSongInfo != null) {
-						manyLineLyricsView.showLrc((int) mSongInfo
-								.getPlayProgress());
-
-					}
-
-					desktopLrcDialog.getFloatLyricsView().init(lyricsParser);
-					desktopLrcDialog.getFloatLyricsView().setHasLrc(true);
-
-					if (mSongInfo != null) {
-						desktopLrcDialog.getFloatLyricsView().showLrc(
+						desktopLrcDialog.getFloatLyricsView().updateView(
 								(int) mSongInfo.getPlayProgress());
 					}
 

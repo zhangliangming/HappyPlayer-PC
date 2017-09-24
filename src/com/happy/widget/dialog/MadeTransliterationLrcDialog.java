@@ -27,7 +27,7 @@ import com.happy.manage.MediaManage;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
 import com.happy.observable.ObserverManage;
-import com.happy.util.LyricsParserUtil;
+import com.happy.util.LyricsUtil;
 import com.happy.widget.button.DefButton;
 import com.happy.widget.button.ImageButton;
 import com.happy.widget.panel.madetransliterationlrc.TransliterationLrcPanel;
@@ -90,7 +90,7 @@ public class MadeTransliterationLrcDialog extends JDialog {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				songInfo = MediaManage.getMediaManage().getSongInfo();
-				songNameJLabel.setText("  " +songInfo.getDisplayName());
+				songNameJLabel.setText("  " + songInfo.getDisplayName());
 				transliterationLrcPanel.initData(songInfo);
 			}
 		});
@@ -178,11 +178,11 @@ public class MadeTransliterationLrcDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				LyricsParserUtil lyricsParserUtil = LyricsManage
+				LyricsUtil lyricsParserUtil = LyricsManage
 						.getLyricsParser(songInfo.getSid());
 				if (lyricsParserUtil != null
-						&& lyricsParserUtil.getLyricsLineTreeMap() != null
-						&& lyricsParserUtil.getLyricsLineTreeMap().size() > 0) {
+						&& lyricsParserUtil.getDefLyricsLineTreeMap() != null
+						&& lyricsParserUtil.getDefLyricsLineTreeMap().size() > 0) {
 
 					// 保存音译歌词
 					saveTransliterationLrc(lyricsParserUtil);
@@ -209,8 +209,8 @@ public class MadeTransliterationLrcDialog extends JDialog {
 	 * 
 	 * @param lyricsParserUtil
 	 */
-	protected void saveTransliterationLrc(LyricsParserUtil lyricsParserUtil) {
-		
+	protected void saveTransliterationLrc(LyricsUtil lyricsParserUtil) {
+
 		LyricsInfo lyricsInfo = lyricsParserUtil.getLyricsIfno();
 		TransliterationLyricsInfo transliterationLyricsInfo = transliterationLrcPanel
 				.getTransliterationLyricsInfo(lyricsInfo);
@@ -220,7 +220,7 @@ public class MadeTransliterationLrcDialog extends JDialog {
 			return;
 		}
 		try {
-			
+
 			lyricsInfo.setTransliterationLyricsInfo(transliterationLyricsInfo);
 
 			if (lyricsInfo != null) {

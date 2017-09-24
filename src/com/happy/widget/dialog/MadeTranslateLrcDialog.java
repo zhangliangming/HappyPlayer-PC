@@ -27,7 +27,7 @@ import com.happy.manage.MediaManage;
 import com.happy.model.MessageIntent;
 import com.happy.model.SongInfo;
 import com.happy.observable.ObserverManage;
-import com.happy.util.LyricsParserUtil;
+import com.happy.util.LyricsUtil;
 import com.happy.widget.button.DefButton;
 import com.happy.widget.button.ImageButton;
 import com.happy.widget.panel.madetranslatelrc.TranslateLrcPanel;
@@ -180,11 +180,11 @@ public class MadeTranslateLrcDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				LyricsParserUtil lyricsParserUtil = LyricsManage
+				LyricsUtil lyricsParserUtil = LyricsManage
 						.getLyricsParser(songInfo.getSid());
 				if (lyricsParserUtil != null
-						&& lyricsParserUtil.getLyricsLineTreeMap() != null
-						&& lyricsParserUtil.getLyricsLineTreeMap().size() > 0) {
+						&& lyricsParserUtil.getDefLyricsLineTreeMap() != null
+						&& lyricsParserUtil.getDefLyricsLineTreeMap().size() > 0) {
 
 					// 保存翻译歌词
 					saveTranslateLrc(lyricsParserUtil);
@@ -210,7 +210,7 @@ public class MadeTranslateLrcDialog extends JDialog {
 	 * 
 	 * @param lyricsParserUtil
 	 */
-	protected void saveTranslateLrc(LyricsParserUtil lyricsParserUtil) {
+	protected void saveTranslateLrc(LyricsUtil lyricsParserUtil) {
 		TranslateLyricsInfo translateLyricsInfo = translateLrcPanel
 				.getTranslateLyricsInfo();
 		if (translateLyricsInfo == null) {
