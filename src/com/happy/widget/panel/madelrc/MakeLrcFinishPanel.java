@@ -30,6 +30,7 @@ import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
 import com.happy.util.LyricsUtil;
 import com.happy.widget.button.DefButton;
+import com.happy.widget.panel.lrc.ManyLineLyricsView;
 import com.happy.widget.slider.MakeLrcSlider;
 
 /**
@@ -85,7 +86,7 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 	/**
 	 * 歌词内容
 	 */
-//	private ManyLineLyricsView manyLineLyricsView;
+	private ManyLineLyricsView manyLineLyricsView;
 
 	/**
 	 * 歌词解析
@@ -281,12 +282,12 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 		bg2.setBackground(new Color(157, 187, 212));
 		bg2.setBounds(10, oPanel.getY() + oPanel.getHeight() + padding,
 				width - 16, height - oH - padding);
-		//
-//		manyLineLyricsView = new ManyLineLyricsView(width - 16, height - oH
-//				- padding, false);
-//		manyLineLyricsView.setBounds(10, oPanel.getY() + oPanel.getHeight()
-//				+ padding, width - 16, height - oH - padding);
-//		this.add(manyLineLyricsView);
+
+		manyLineLyricsView = new ManyLineLyricsView(width - 16, height - oH
+				- padding, false);
+		manyLineLyricsView.setBounds(10, oPanel.getY() + oPanel.getHeight()
+				+ padding, width - 16, height - oH - padding);
+		this.add(manyLineLyricsView);
 		this.add(bg2);
 		this.add(oPanel);
 		this.add(bg);
@@ -315,12 +316,12 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 		lyricsLineTreeMap = lyricsInfo.getLyricsLineInfoTreeMap();
 		lyricsParser.setDefLyricsLineTreeMap(lyricsLineTreeMap);
 
-//		if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
-//			manyLineLyricsView.init(0, lyricsParser);
-//			manyLineLyricsView.setHasLrc(true);
-//		} else {
-//			manyLineLyricsView.setHasLrc(false);
-//		}
+		if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
+			manyLineLyricsView.setLyricsUtil(lyricsParser);
+
+		} else {
+			manyLineLyricsView.setLyricsUtil(null);
+		}
 	}
 
 	public LyricsInfo getLrcData() {
@@ -376,7 +377,9 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 					pauseButton.setVisible(false);
 
 				}
-//				manyLineLyricsView.setHasLrc(false);
+
+				if (manyLineLyricsView != null)
+					manyLineLyricsView.setLyricsUtil(null);
 
 				songSlider.setValue(0);
 				songSlider.setMaximum((int) mSongInfo.getDuration());
@@ -399,12 +402,12 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 									.getDuration()));
 				}
 
-//				if (manyLineLyricsView.getHasLrc()
-//						&& !manyLineLyricsView.getBlScroll()) {
-//
-//					manyLineLyricsView.showLrc((int) mSongInfo
-//							.getPlayProgress());
-//				}
+				if (manyLineLyricsView.getLyricsUtil() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap().size() > 0) {
+					manyLineLyricsView.updateView((int) mSongInfo
+							.getPlayProgress());
+				}
 
 			} else if (songMessage.getType() == SongMessage.SERVICEPAUSEEDMUSIC
 					|| songMessage.getType() == SongMessage.SERVICESTOPEDMUSIC) {
@@ -417,17 +420,17 @@ public class MakeLrcFinishPanel extends JPanel implements Observer {
 						+ "/"
 						+ TimeUtils.parseString((int) mSongInfo.getDuration()));
 
-//				if (manyLineLyricsView.getHasLrc()
-//						&& !manyLineLyricsView.getBlScroll()) {
-//
-//					manyLineLyricsView.showLrc((int) mSongInfo
-//							.getPlayProgress());
-//				}
+				if (manyLineLyricsView.getLyricsUtil() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap().size() > 0) {
+					manyLineLyricsView.updateView((int) mSongInfo
+							.getPlayProgress());
+				}
 			}
 		} else {
 
-//			if (manyLineLyricsView != null)
-//				manyLineLyricsView.setHasLrc(false);
+			if (manyLineLyricsView != null)
+				manyLineLyricsView.setLyricsUtil(null);
 
 			songSlider.setValue(0);
 			songSlider.setMaximum(0);

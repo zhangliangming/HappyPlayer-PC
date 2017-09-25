@@ -26,5 +26,6 @@
 	<classpathentry exported="true" kind="lib" path="haplayer/libs/commons-logging.jar"/>
 	<classpathentry exported="true" kind="lib" path="haplayer/libs/ezmorph-1.0.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="haplayer/libs/json-lib-2.1-jdk15.jar"/>
+	<classpathentry kind="lib" path="haplayer/libs/TweenEngine-lib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

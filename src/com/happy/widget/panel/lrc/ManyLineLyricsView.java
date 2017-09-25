@@ -1,12 +1,16 @@
 package com.happy.widget.panel.lrc;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Paint;
+import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.Transparency;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -15,6 +19,7 @@ import java.io.File;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
@@ -22,11 +27,14 @@ import javax.swing.event.MouseInputListener;
 import com.happy.common.BaseData;
 import com.happy.common.Constants;
 import com.happy.lyrics.model.LyricsLineInfo;
+import com.happy.tween.ValueAnimator;
+import com.happy.tween.ValueAnimator.AnimationListener;
+import com.happy.tween.ValueAnimator.AnimatorUpdateListener;
 import com.happy.util.FontsUtil;
 import com.happy.util.LyricsUtil;
 
 /**
- * 桌面双行歌词:支持翻译歌词和音译歌词。因为之前一直都是用Graphics2D和clip来实现动感歌词效果，
+ * 多行歌词面板:支持翻译歌词和音译歌词。因为之前一直都是用Graphics2D和clip来实现动感歌词效果，
  * 但是在翻译歌词和音译歌词上面，再用clip来实现是比较麻烦的，所以，这里使用image来实现
  * 动感歌词效果；其实image内部也是使用Graphics2D和clip来实现动感歌词效果，并生成一个文本图片，
  * 然后再把该图片绘画到视图上面，从而实现动感歌词效果。
@@ -34,7 +42,7 @@ import com.happy.util.LyricsUtil;
  * @author zhangliangming
  * 
  */
-public class FloatLyricsView extends JPanel {
+public class ManyLineLyricsView extends JPanel {
 
 	/**
 	 * 
@@ -46,28 +54,38 @@ public class FloatLyricsView extends JPanel {
 	 */
 	private String mDefText;
 
-	/**
-	 * 默认高亮未读画笔
-	 */
-	private GradientPaint mPaint;
-	/**
-	 * 高亮已读画笔
-	 */
-	private GradientPaint mPaintHL;
+	private int mWidth = 0;
 
 	/**
-	 * 空行高度
+	 * 视图高度
 	 */
-	private int mSpaceLineHeight = 0;
+	private int mHeight = 0;
 	/**
-	 * 歌词字体大小
+	 * 歌词进入渐变透明度的区域高度大小，默认取视图高度的1/4
 	 */
-	private int mFontSize = 0;
+	private int mShadeHeight = 0;
+	/**
+	 * 颜色渐变梯度
+	 */
+	private int mMaxAlphaValue = 255;
+	private int mMinAlphaValue = 50;
+	private int mAlphaValue = 0;
 
 	/**
-	 * 歌词解析
+	 * 是否画时间线
+	 * 
+	 * **/
+	private boolean mIsDrawTimeLine = false;
+
+	/**
+	 * Y轴移动的时间
 	 */
-	private LyricsUtil mLyricsUtil;
+	private int mDuration = 200;
+
+	/**
+	 * 歌词在Y轴上的偏移量
+	 */
+	private float mOffsetY = 0;
 
 	/**
 	 * 歌词列表
@@ -92,9 +110,18 @@ public class FloatLyricsView extends JPanel {
 	private int mLyricsWordIndex = -1;
 
 	/**
+	 * 当前歌词第几个字 已经播放的长度
+	 */
+	private float mLineLyricsHLWidth = 0;
+	/**
 	 * 当前歌词第几个字 已经播放的时间
 	 */
 	private float mLyricsWordHLTime = 0;
+
+	/**
+	 * 空行高度
+	 */
+	private int mSpaceLineHeight = 30;
 
 	/***
 	 * 播放进度
@@ -105,6 +132,8 @@ public class FloatLyricsView extends JPanel {
 	 * 额外歌词监听事件
 	 */
 	private ExtraLyricsListener mExtraLyricsListener;
+
+	private MetaDownListener mMetaDownListener;
 	// ////////////////////////////////////翻译和音译歌词变量//////////////////////////////////////////////
 
 	public static final int SHOWTRANSLATELRC = 0;
@@ -131,100 +160,88 @@ public class FloatLyricsView extends JPanel {
 	private float mExtraLyricsWordHLTime = 0;
 
 	/**
+	 * 额外歌词行空行高度
+	 */
+	private int mExtraLrcSpaceLineHeight = 20;
+
+	/**
 	 * 判断歌词集合是否在重构
 	 */
 	private boolean isReconstruct = false;
 
-	// ///////////////////////////////////////////////////
-
-	// 统一字体
-	String mFontFilePath = Constants.PATH_FONTS + File.separator
-			+ "Arial-Unicode-Bold.ttf";
 	/**
 	 * 字体
 	 */
 	private Font mBaseFont;
-	// //////////////////////////////////////////////////////
 
-	private int mWidth = 0;
-	private int mHeight = 0;
+	// ///////////////////////////////////////
 
-	private MouseListener mMouseListener = new MouseListener();
 	/**
-	 * 判断是否进入
+	 * 默认高亮未读画笔
 	 */
-	private boolean isEnter = false;
+	private Color mPaint;
 	/**
-	 * 是否显示
+	 * 高亮已读画笔
 	 */
-	private boolean isShow = false;
-	/**
-	 * 桌面窗口事件
-	 */
-	private MouseInputListener desLrcDialogMouseListener;
+	private Color mPaintHL;
 
-	public FloatLyricsView(int width, int height,
-			MouseInputListener desLrcDialogMouseListener) {
-		this.desLrcDialogMouseListener = desLrcDialogMouseListener;
+	/**
+	 * 歌词解析
+	 */
+	private LyricsUtil mLyricsUtil;
+
+	// ///////////////////////////////////////
+	/**
+	 * 动画
+	 */
+	private ValueAnimator mValueAnimator;
+
+	public ManyLineLyricsView(int width, int height, boolean hasLrcEvent) {
 		this.mWidth = width;
 		this.mHeight = height;
-		initSizeWord();
-		this.setOpaque(false);
 
-		init();
-		initLockEvent();
+		mShadeHeight = height / 4;
+		//
+		mAlphaValue = mShadeHeight / (mMaxAlphaValue - mMinAlphaValue);
+		mBaseFont = FontsUtil.getBaseFont(BaseData.appFontSize);
+		mDefText = Constants.APPTIPTITLE;
+
+		initSizeWord();
+		initColor();
+
+		this.setOpaque(false);
+		if (hasLrcEvent) {
+			lrcScrollListener = new LrcScrollListener();
+			this.addMouseListener(lrcScrollListener);
+			this.addMouseMotionListener(lrcScrollListener);
+		}
 	}
 
-	private void init() {
-		mDefText = Constants.APPTIPTITLE;
+	/***
+	 * 被始化颜色
+	 */
+	private void initColor() {
+		mPaint = Color.white;
+		mPaintHL = BaseData.lrcColorStr[BaseData.lrcColorIndex];
+
 	}
 
 	/**
-	 * 初始化字体高度
+	 * 初始化字体大小
 	 */
 	private void initSizeWord() {
-		mFontSize = BaseData.desktopLrcFontSize;
-		mBaseFont = FontsUtil
-				.getFontByFile(mFontFilePath, Font.BOLD, mFontSize);
+		mBaseFont = mBaseFont.deriveFont(Font.PLAIN, BaseData.lrcFontSize);
 	}
 
 	/**
-	 * 初始化默认字体的渐变颜色
-	 * 
+	 * 初始化颜色透明度区域大小
 	 */
-	private void initPaintHLDEFColor(float x, float y, int height) {
-		mPaint = new GradientPaint(x, y - height / 2,
-				BaseData.DESLRCNOREADCOLORFRIST[BaseData.desktopLrcIndex], x, y
-						+ height,
-				BaseData.DESLRCNOREADCOLORSECOND[BaseData.desktopLrcIndex],
-				true);
-	}
-
-	/**
-	 * 初始化高亮字体的渐变颜色
-	 * 
-	 */
-	private void initPaintHLEDColor(float x, float y, int height) {
-
-		mPaintHL = new GradientPaint(x, y - height / 2,
-				BaseData.DESLRCREADEDCOLORFRIST[BaseData.desktopLrcIndex], x, y
-						+ height,
-				BaseData.DESLRCREADEDCOLORSECOND[BaseData.desktopLrcIndex],
-				true);
-	}
-
-	/**
-	 *
-	 */
-	protected void initLockEvent() {
-		this.addMouseListener(mMouseListener);
-		this.addMouseMotionListener(mMouseListener);
+	private void initShadeHeight() {
+		mShadeHeight = mHeight / 4;
 	}
 
 	// 绘制组件
 	public void paint(Graphics g) {
-
-		// long begin = System.currentTimeMillis();
 		Graphics2D g2d = (Graphics2D) g;
 		// 以达到边缘平滑的效果
 
@@ -234,24 +251,94 @@ public class FloatLyricsView extends JPanel {
 				RenderingHints.VALUE_STROKE_PURE);
 		g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING,
 				RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+
 		//
 		g2d.setFont(mBaseFont);
-
-		if (isEnter || isShow) {
-			g2d.setPaint(new Color(0, 0, 0, 150));
-			g2d.fillRect(0, 0, mWidth, mHeight);
-		}
-
 		if (mLyricsLineTreeMap == null || mLyricsLineTreeMap.size() == 0) {
 			drawDefText(g2d);
 		} else {
-			// 计算空行高度
-			mSpaceLineHeight = (mHeight - 2 * getTextHeight(g2d)) / 3;
+			// 绘画多行歌词
+			drawManyLineLrcText(g2d);
+		}
+	}
 
-			// 判断是否需要绘画额外歌词
+	/**
+	 * 绘画多行歌词
+	 * 
+	 * @param g2d
+	 */
+	private void drawManyLineLrcText(Graphics2D g2d) {
+		float centreY = (mHeight + getTextHeight(g2d)) * 0.5f
+				+ getCurLineScollHeight(g2d, mLyricsLineNum) - mOffsetY;
+
+		// 获取要透明度要渐变的高度大小
+		if (mShadeHeight == 0) {
+			initShadeHeight();
+		}
+		centreY = drawDGLineLrc(g2d, centreY);
+
+		// 画下面歌词
+		drawDownLineLrc(g2d, centreY);
+
+		// 画上面歌词
+		drawUpLineLrc(g2d, centreY);
+	}
+
+	/**
+	 * 绘画上面歌词
+	 * 
+	 * @param g2d
+	 * @param centreY
+	 */
+	private void drawUpLineLrc(Graphics2D g2d, float centreY) {
+		for (int i = mLyricsLineNum - 1; i >= 0; i--) {
+
+			// 判断是否需要显示音译或者翻译歌词
 			if (mExtraLrcStatus == SHOWTRANSLATELRC
 					|| mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
+				List<LyricsLineInfo> extraLrcList = null;
+				if (mExtraLrcStatus == SHOWTRANSLATELRC) {
+					extraLrcList = mTranslateLrcLineInfos;
+				} else {
+					extraLrcList = mTransliterationLrcLineInfos;
+				}
+				if (i == (mLyricsLineNum - 1)) {
+					centreY = centreY - getLineHeight(g2d) - getLineHeight(g2d)
+							+ (mSpaceLineHeight - mExtraLrcSpaceLineHeight);
+				} else {
+					centreY = centreY - getLineHeight(g2d);
+				}
 
+				drawLineLrc(g2d, centreY, extraLrcList.get(i));
+				centreY = centreY
+						+ (mSpaceLineHeight - mExtraLrcSpaceLineHeight);
+			}
+
+			centreY = centreY - getLineHeight(g2d);
+			LyricsLineInfo lyricsLineInfo = mLyricsLineTreeMap.get(i);
+			drawLineLrc(g2d, centreY, lyricsLineInfo);
+
+		}
+	}
+
+	/**
+	 * 绘画下面歌词
+	 * 
+	 * @param g2d
+	 * @param centreY
+	 */
+	private void drawDownLineLrc(Graphics2D g2d, float centreY) {
+		// 画当前歌词之后的歌词
+		for (int i = mLyricsLineNum + 1; i < mLyricsLineTreeMap.size(); i++) {
+
+			centreY = centreY + getLineHeight(g2d);
+
+			LyricsLineInfo lyricsLineInfo = mLyricsLineTreeMap.get(i);
+			drawLineLrc(g2d, centreY, lyricsLineInfo);
+
+			// 判断是否需要显示音译或者翻译歌词
+			if (mExtraLrcStatus == SHOWTRANSLATELRC
+					|| mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
 				List<LyricsLineInfo> extraLrcList = null;
 				if (mExtraLrcStatus == SHOWTRANSLATELRC) {
 					extraLrcList = mTranslateLrcLineInfos;
@@ -259,41 +346,87 @@ public class FloatLyricsView extends JPanel {
 					extraLrcList = mTransliterationLrcLineInfos;
 				}
 
-				// 绘画额外歌词
-				drawExtraLrcText(g2d, extraLrcList);
-
-			} else {
-				// 绘画默认双行歌词
-				drawTwoLrcText(g2d);
+				centreY = centreY + getExtraLrcLineHeight(g2d);
+				drawLineLrc(g2d, centreY, extraLrcList.get(i));
 			}
-		}
 
-		super.paint(g2d);
+		}
 
 	}
 
 	/**
-	 * 绘画额外歌词
+	 * 绘画额外行歌词
+	 * 
+	 * @param g2d
+	 * @param centreY
+	 * @param lyricsLineInfo
+	 */
+	private void drawLineLrc(Graphics2D g2d, float centreY,
+			LyricsLineInfo lyricsLineInfo) {
+
+		String text = lyricsLineInfo.getLineLyrics();
+		int textWidth = getTextWidth(g2d, text);
+		float textX = (mWidth - textWidth) / 2;
+
+		// 如果计算出的textX为负数，将textX置为0(实现：如果歌词宽大于view宽，则居左显示，否则居中显示)
+		textX = Math.max(textX, 10);
+		g2d.setPaint(mPaint);
+		// 画当前歌词
+		g2d.drawString(text, textX, centreY);
+
+	}
+
+	/**
+	 * 绘画当前歌词行
+	 * 
+	 * @param g2d
+	 * @param centreY
+	 * @return
+	 */
+	private float drawDGLineLrc(Graphics2D g2d, float centreY) {
+		// 画当前行歌词
+		LyricsLineInfo lyricsLineInfo = mLyricsLineTreeMap.get(mLyricsLineNum);
+		// 画当前行歌词
+		drawDGLrcText(g2d, lyricsLineInfo, mPaint, mPaintHL, (int) centreY,
+				mLyricsWordIndex, mLyricsWordHLTime);
+
+		//
+		if (mExtraLrcStatus == SHOWTRANSLATELRC
+				|| mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
+
+			centreY += getExtraLrcLineHeight(g2d);
+
+			List<LyricsLineInfo> extraLrcList = null;
+			if (mExtraLrcStatus == SHOWTRANSLATELRC) {
+				extraLrcList = mTranslateLrcLineInfos;
+			} else {
+				extraLrcList = mTransliterationLrcLineInfos;
+			}
+
+			// 绘画额外歌词
+			drawExtraLrcText(g2d, extraLrcList, centreY);
+
+		}
+
+		return centreY;
+	}
+
+	/**
+	 * 绘画额外歌词行
 	 * 
 	 * @param g2d
 	 * @param extraLrcList
-	 *            额外歌词集合
+	 * @param centreY
+	 * @return
 	 */
 	private void drawExtraLrcText(Graphics2D g2d,
-			List<LyricsLineInfo> extraLrcList) {
-
-		LyricsLineInfo lyricsLineInfo = mLyricsLineTreeMap.get(mLyricsLineNum);
-		int textY = getLineHeight(g2d);
-		// 画当前行歌词
-		drawDGLrcText(g2d, lyricsLineInfo, mPaint, mPaintHL, textY,
-				mLyricsWordIndex, mLyricsWordHLTime);
-
+			List<LyricsLineInfo> extraLrcList, float textY) {
 		// 画额外歌词
 		LyricsLineInfo extraLyricsLineInfo = extraLrcList
 				.get(mExtraLyricsLineNum);
-		textY = getLineHeight(g2d) * 2;
-		drawDGLrcText(g2d, extraLyricsLineInfo, mPaint, mPaintHL, textY,
+		drawDGLrcText(g2d, extraLyricsLineInfo, mPaint, mPaintHL, (int) textY,
 				mExtraLyricsWordIndex, mExtraLyricsWordHLTime);
+
 	}
 
 	/**
@@ -309,11 +442,11 @@ public class FloatLyricsView extends JPanel {
 	 * @param mLyricsWordHLTime
 	 */
 	private void drawDGLrcText(Graphics2D g2d, LyricsLineInfo lyricsLineInfo,
-			GradientPaint mPaint, GradientPaint mPaintHL, int textY,
-			int mLyricsWordIndex, float mLyricsWordHLTime) {
+			Paint mPaint, Paint mPaintHL, int textY, int mLyricsWordIndex,
+			float mLyricsWordHLTime) {
 		// 当行歌词
 		String currentLyrics = lyricsLineInfo.getLineLyrics();
-		int currentTextWidth = getTextWidth(g2d, currentLyrics);
+		int lineLyricsWidth = getTextWidth(g2d, currentLyrics);
 		float lineLyricsHLWidth = 0;
 		if (mLyricsWordIndex != -1) {
 			String lyricsWords[] = lyricsLineInfo.getLyricsWords();
@@ -337,157 +470,31 @@ public class FloatLyricsView extends JPanel {
 			lineLyricsHLWidth = lyricsBeforeWordWidth + len;
 		} else {
 			// 整行歌词
-			lineLyricsHLWidth = currentTextWidth;
+			lineLyricsHLWidth = lineLyricsWidth;
 		}
 
 		// 当前歌词行的x坐标
 		float textX = 0;
 		float lrcTextMoveX = 0;
-		if (currentTextWidth > mWidth) {
-			if (lineLyricsHLWidth >= mWidth) {
-				if ((currentTextWidth - lineLyricsHLWidth) >= mWidth) {
-					lrcTextMoveX = (mWidth - lineLyricsHLWidth);
+		if (lineLyricsWidth > mWidth) {
+			if (lineLyricsHLWidth >= mWidth / 2) {
+				if ((lineLyricsWidth - lineLyricsHLWidth) >= mWidth / 2) {
+					lrcTextMoveX = (mWidth / 2 - lineLyricsHLWidth);
 				} else {
-					lrcTextMoveX = mWidth - currentTextWidth
-							- (mWidth - currentTextWidth) / 2;
+					lrcTextMoveX = mWidth - lineLyricsWidth - 20;
 				}
 			} else {
-				lrcTextMoveX = (mWidth - currentTextWidth) / 2;
+				lrcTextMoveX = 10;
 			}
 			// 如果歌词宽度大于view的宽，则需要动态设置歌词的起始x坐标，以实现水平滚动
 			textX = lrcTextMoveX;
 		} else {
 			// 如果歌词宽度小于view的宽
-			textX = (mWidth - currentTextWidth) / 2;
+			textX = (mWidth - lineLyricsWidth) / 2;
 		}
 
 		drawDGBufferedImage(g2d, textX, textY, currentLyrics, lineLyricsHLWidth);
 
-	}
-
-	/**
-	 * 绘画双行歌词
-	 * 
-	 * @param g2d
-	 */
-	private void drawTwoLrcText(Graphics2D g2d) {
-
-		// 先设置当前歌词，之后再根据索引判断是否放在左边还是右边
-
-		LyricsLineInfo lyricsLineInfo = mLyricsLineTreeMap.get(mLyricsLineNum);
-		// 当行歌词
-		String currentLyrics = lyricsLineInfo.getLineLyrics();
-
-		int currentTextWidth = getTextWidth(g2d, currentLyrics);
-		float lineLyricsHLWidth = 0;
-
-		if (mLyricsWordIndex != -1) {
-
-			String lyricsWords[] = lyricsLineInfo.getLyricsWords();
-			int wordsDisInterval[] = lyricsLineInfo.getWordsDisInterval();
-			// 当前歌词之前的歌词
-			String lyricsBeforeWord = "";
-			for (int i = 0; i < mLyricsWordIndex; i++) {
-				lyricsBeforeWord += lyricsWords[i];
-			}
-			// 当前歌词
-			String lyricsNowWord = lyricsWords[mLyricsWordIndex].trim();// 去掉空格
-
-			// 当前歌词之前的歌词长度
-			int lyricsBeforeWordWidth = getTextWidth(g2d, lyricsBeforeWord);
-
-			// 当前歌词长度
-			float lyricsNowWordWidth = getTextWidth(g2d, lyricsNowWord);
-
-			float len = lyricsNowWordWidth / wordsDisInterval[mLyricsWordIndex]
-					* mLyricsWordHLTime;
-			lineLyricsHLWidth = lyricsBeforeWordWidth + len;
-		} else {
-			// 整行歌词
-			lineLyricsHLWidth = currentTextWidth;
-		}
-		// 当前歌词行的x坐标
-		float textX = 0;
-		float lrcTextMoveX = 0;
-		// 当前歌词行的y坐标
-		float textY = 0;
-		if (mLyricsLineNum % 2 == 0) {
-
-			if (currentTextWidth > mWidth) {
-				if (lineLyricsHLWidth >= mWidth) {
-					if ((currentTextWidth - lineLyricsHLWidth) >= mWidth) {
-						lrcTextMoveX = (mWidth - lineLyricsHLWidth);
-					} else {
-						lrcTextMoveX = mWidth - currentTextWidth - 20;
-					}
-				} else {
-					lrcTextMoveX = 10;
-				}
-				// 如果歌词宽度大于view的宽，则需要动态设置歌词的起始x坐标，以实现水平滚动
-				textX = lrcTextMoveX;
-			} else {
-				// 如果歌词宽度小于view的宽
-				textX = 10;
-			}
-
-			// 画下一句的歌词
-			if (mLyricsLineNum + 1 < mLyricsLineTreeMap.size()) {
-				String lyricsRight = mLyricsLineTreeMap.get(mLyricsLineNum + 1)
-						.getLineLyrics();
-
-				int lyricsRightWidth = getTextWidth(g2d, lyricsRight);
-				float textRightX = mWidth - lyricsRightWidth - 10;
-				// 如果计算出的textX为负数，将textX置为0(实现：如果歌词宽大于view宽，则居左显示，否则居中显示)
-				textRightX = Math.max(textRightX, 10);
-				drawBackground(g2d, lyricsRight, textRightX,
-						getLineHeight(g2d) * 2);
-
-				int textHeight = getTextHeight(g2d);
-				initPaintHLDEFColor(textRightX, getLineHeight(g2d) * 2,
-						textHeight);
-				g2d.setPaint(mPaint);
-				g2d.drawString(lyricsRight, textRightX, getLineHeight(g2d) * 2);
-			}
-
-			textY = getLineHeight(g2d);
-
-		} else {
-
-			if (currentTextWidth > mWidth) {
-				if (lineLyricsHLWidth >= mWidth) {
-					if ((currentTextWidth - lineLyricsHLWidth) >= mWidth) {
-						lrcTextMoveX = (mWidth - lineLyricsHLWidth);
-					} else {
-						lrcTextMoveX = mWidth - currentTextWidth - 10;
-					}
-				} else {
-					lrcTextMoveX = 10;
-				}
-				// 如果歌词宽度大于view的宽，则需要动态设置歌词的起始x坐标，以实现水平滚动
-				textX = lrcTextMoveX;
-			} else {
-				// 如果歌词宽度小于view的宽
-				textX = mWidth - currentTextWidth - 10;
-			}
-
-			// 画下一句的歌词
-			if (mLyricsLineNum + 1 != mLyricsLineTreeMap.size()) {
-				String lyricsLeft = mLyricsLineTreeMap.get(mLyricsLineNum + 1)
-						.getLineLyrics();
-
-				drawBackground(g2d, lyricsLeft, 10, getLineHeight(g2d));
-
-				int textHeight = getTextHeight(g2d);
-				initPaintHLDEFColor(10, getLineHeight(g2d), textHeight);
-				g2d.setPaint(mPaint);
-				g2d.drawString(lyricsLeft, 10, getLineHeight(g2d));
-			}
-
-			textY = getLineHeight(g2d) * 2;
-
-		}
-		// 画动感歌词
-		drawDGBufferedImage(g2d, textX, textY, currentLyrics, lineLyricsHLWidth);
 	}
 
 	/**
@@ -505,7 +512,7 @@ public class FloatLyricsView extends JPanel {
 		FontMetrics fm = origG2d.getFontMetrics();
 		Rectangle2D rc = fm.getStringBounds(text, origG2d);
 		int width = (int) rc.getWidth();
-		int height = (int) rc.getHeight() + fm.getDescent() * 2  + mSpaceLineHeight;
+		int height = (int) rc.getHeight() + fm.getDescent() * 2 + mSpaceLineHeight;
 		width = Math.max(width, 1);
 		height = Math.max(height, 1);
 
@@ -532,9 +539,6 @@ public class FloatLyricsView extends JPanel {
 		g2d.setFont(mBaseFont);
 		int dgTextX = 0;
 		int dgTextY = getLineHeight(g2d);
-		drawBackground(g2d, text, dgTextX, dgTextY);
-		int textHeight = getTextHeight(g2d);
-		initPaintHLDEFColor(dgTextX, dgTextY, textHeight);
 
 		g2d.setPaint(mPaint);
 		// 画当前歌词
@@ -547,7 +551,6 @@ public class FloatLyricsView extends JPanel {
 		g2d.setClip(dgTextX, clipY, (int) lineLyricsHLWidth,
 				getRealTextHeight(g2d));
 
-		initPaintHLEDColor(dgTextX, dgTextY, textHeight);
 		g2d.setPaint(mPaintHL);
 		g2d.drawString(text, dgTextX, dgTextY);
 
@@ -559,7 +562,7 @@ public class FloatLyricsView extends JPanel {
 	}
 
 	/**
-	 * 画默认文本
+	 * 绘画默认文本
 	 * 
 	 * @param g2d
 	 */
@@ -574,37 +577,13 @@ public class FloatLyricsView extends JPanel {
 		int clipY = (int) (heightY - getRealTextHeight(g2d))
 				+ getAdjustLrcHeight(g2d);
 
-		drawBackground(g2d, mDefText, leftX, heightY);
-
-		initPaintHLDEFColor(leftX, heightY, textHeight);
 		g2d.setPaint(mPaint);
 		g2d.drawString(mDefText, leftX, heightY);
 
 		g2d.setClip(leftX, clipY, textWidth / 2, getRealTextHeight(g2d));
 
-		drawBackground(g2d, mDefText, leftX, heightY);
-
-		initPaintHLEDColor(leftX, heightY, textHeight);
 		g2d.setPaint(mPaintHL);
 		g2d.drawString(mDefText, leftX, heightY);
-
-	}
-
-	/**
-	 * 描绘轮廓
-	 * 
-	 * @param canvas
-	 * @param string
-	 * @param x
-	 * @param y
-	 */
-	private void drawBackground(Graphics2D g2d, String string, float x, float y) {
-		g2d.setColor(new Color(0, 0, 0, 200));
-		g2d.drawString(string, x - 1, y);
-		g2d.drawString(string, x + 1, y);
-		g2d.drawString(string, x, y + 1);
-		g2d.drawString(string, x, y - 1);
-
 	}
 
 	/**
@@ -626,6 +605,16 @@ public class FloatLyricsView extends JPanel {
 	 */
 	private int getLineHeight(Graphics2D g2d) {
 		return getTextHeight(g2d) + mSpaceLineHeight;
+	}
+
+	/**
+	 * 获取额外歌词行高度。用于y轴位置计算
+	 * 
+	 * @param paint
+	 * @return
+	 */
+	public int getExtraLrcLineHeight(Graphics2D g2d) {
+		return getTextHeight(g2d) + mExtraLrcSpaceLineHeight;
 	}
 
 	/**
@@ -663,7 +652,32 @@ public class FloatLyricsView extends JPanel {
 		return (int) rc.getWidth();
 	}
 
-	// ///////////////////////////////////////
+	/**
+	 * 获取当前行所需的滑动高度
+	 * 
+	 * @param lyricsLineNum
+	 * @return
+	 */
+	private float getCurLineScollHeight(Graphics2D g2d, int lyricsLineNum) {
+		int scrollHeight = 0;
+
+		for (int i = 0; i < lyricsLineNum; i++) {
+			scrollHeight += getLineHeight(g2d);
+			// 判断是否有翻译歌词或者音译歌词
+			if (mExtraLrcStatus == SHOWTRANSLATELRC) {
+				if (mTranslateLrcLineInfos != null
+						&& mTranslateLrcLineInfos.size() > 0) {
+					scrollHeight += getExtraLrcLineHeight(g2d);
+				}
+			} else if (mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
+				if (mTransliterationLrcLineInfos != null
+						&& mTransliterationLrcLineInfos.size() > 0) {
+					scrollHeight += getExtraLrcLineHeight(g2d);
+				}
+			}
+		}
+		return scrollHeight;
+	}
 
 	/**
 	 * 更新歌词
@@ -677,7 +691,7 @@ public class FloatLyricsView extends JPanel {
 		int newLyricsLineNum = mLyricsUtil.getLineNumber(mLyricsLineTreeMap,
 				playProgress);
 		if (newLyricsLineNum != mLyricsLineNum) {
-
+			smoothScrollTo(mLyricsLineNum, newLyricsLineNum);
 			mLyricsLineNum = newLyricsLineNum;
 		}
 		// 获取歌词字索引
@@ -720,6 +734,53 @@ public class FloatLyricsView extends JPanel {
 	}
 
 	/**
+	 * 从旧行滚动到新行
+	 * 
+	 * @param lyricsLineNum
+	 * @param newLyricsLineNum
+	 */
+	private void smoothScrollTo(int lyricsLineNum, int newLyricsLineNum) {
+		if (mValueAnimator == null) {
+			mValueAnimator = new ValueAnimator();
+		} else {
+			if (mValueAnimator.isRunning()) {
+				mValueAnimator.cancel();
+			}
+			mValueAnimator = new ValueAnimator();
+		}
+
+		Graphics2D g2d = (Graphics2D) getGraphics();
+		g2d.setFont(mBaseFont);
+
+		float start = getCurLineScollHeight(g2d, lyricsLineNum);
+		float end = getCurLineScollHeight(g2d, newLyricsLineNum);
+
+		mValueAnimator.ofFloat(start, end);
+		mValueAnimator.setAnimatorUpdateListener(new AnimatorUpdateListener() {
+
+			@Override
+			public void onAnimationUpdate(float curValue) {
+				mOffsetY = curValue;
+				repaint();
+
+			}
+		});
+		mValueAnimator.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(float curValue) {
+
+			}
+
+			@Override
+			public void onAnimationEnd(float curValue) {
+			}
+		});
+		mValueAnimator.start();
+
+	}
+
+	/**
 	 * 设置歌词
 	 * 
 	 * @param mLyricsUtil
@@ -758,6 +819,8 @@ public class FloatLyricsView extends JPanel {
 		mExtraLyricsLineNum = 0;
 		mExtraLyricsWordIndex = -1;
 		mExtraLrcStatus = NOSHOWEXTRALRC;
+
+		mOffsetY = 0;
 
 	}
 
@@ -801,7 +864,8 @@ public class FloatLyricsView extends JPanel {
 	public synchronized void refreshLrcFontColor() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				repaint();
+				initColor();
+				setExtraLrcStatus(mExtraLrcStatus);
 			}
 		});
 	}
@@ -813,8 +877,7 @@ public class FloatLyricsView extends JPanel {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				initSizeWord();
-				updateView(mProgress);
-				repaint();
+				setExtraLrcStatus(mExtraLrcStatus);
 			}
 		});
 	}
@@ -833,11 +896,165 @@ public class FloatLyricsView extends JPanel {
 		if (newLyricsLineNum != mLyricsLineNum) {
 			mLyricsLineNum = newLyricsLineNum;
 		}
+		// 切换歌词时，直接设置offsety值
+		Graphics2D g2d = (Graphics2D) getGraphics();
+		g2d.setFont(mBaseFont);
+		mOffsetY = getCurLineScollHeight(g2d, mLyricsLineNum);
+		//
 		isReconstruct = false;
 		updateView(mProgress);
 	}
 
-	// ///////////////////////////////////////
+	private Toolkit tk = Toolkit.getDefaultToolkit();
+
+	private Cursor draggedCursor = null;
+
+	private Cursor pressedCursor = null;
+
+	/**
+	 * 歌词滚动监听器
+	 */
+	private LrcScrollListener lrcScrollListener;
+
+	private class LrcScrollListener implements MouseInputListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+
+			if (e.isMetaDown()) {// 检测鼠标右键单击
+				if (mMetaDownListener != null) {
+					mMetaDownListener.MetaDown(e);
+				}
+			} else {
+
+				if (mLyricsLineTreeMap != null
+						&& mLyricsLineTreeMap.size() == 0)
+					return;
+
+				if (draggedCursor == null) {
+					String imagePath = Constants.PATH_ICON + File.separator
+							+ "cursor_drag.png";
+					Image image = new ImageIcon(imagePath).getImage();
+					draggedCursor = tk.createCustomCursor(image, new Point(10,
+							10), "norm");
+				}
+				// 设置鼠标的图标
+				setCursor(draggedCursor);
+
+				mIsDrawTimeLine = true;
+
+				repaint();
+
+			}
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			if (e.isMetaDown()) {// 检测鼠标右键单击
+
+			} else {
+				if (mLyricsLineTreeMap != null
+						&& mLyricsLineTreeMap.size() == 0)
+					return;
+
+				if (pressedCursor == null) {
+					String imagePath = Constants.PATH_ICON + File.separator
+							+ "cursor_pressed.png";
+					Image image = new ImageIcon(imagePath).getImage();
+					pressedCursor = tk.createCustomCursor(image, new Point(10,
+							10), "norm");
+				}
+				// 设置鼠标的图标
+				setCursor(pressedCursor);
+
+				mIsDrawTimeLine = false;
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+
+			if (pressedCursor == null) {
+				String imagePath = Constants.PATH_ICON + File.separator
+						+ "cursor_pressed.png";
+				Image image = new ImageIcon(imagePath).getImage();
+				pressedCursor = tk.createCustomCursor(image, new Point(10, 10),
+						"norm");
+			}
+			// 设置鼠标的图标
+			setCursor(pressedCursor);
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			setCursor(null);
+		}
+
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			if (e.isMetaDown()) {// 检测鼠标右键单击
+
+			} else {
+				if (mLyricsLineTreeMap != null
+						&& mLyricsLineTreeMap.size() == 0)
+					return;
+
+				if (draggedCursor == null) {
+					String imagePath = Constants.PATH_ICON + File.separator
+							+ "cursor_drag.ico";
+					Image image = new ImageIcon(imagePath).getImage();
+					draggedCursor = tk.createCustomCursor(image, new Point(10,
+							10), "norm");
+				}
+				// 设置鼠标的图标
+				setCursor(draggedCursor);
+
+				repaint();
+			}
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+
+		}
+
+	}
+
+	public LyricsUtil getLyricsUtil() {
+		return mLyricsUtil;
+	}
+
+	public TreeMap<Integer, LyricsLineInfo> getLyricsLineTreeMap() {
+		return mLyricsLineTreeMap;
+	}
+
+	public void setMetaDownListener(MetaDownListener metaDownListener) {
+		this.mMetaDownListener = metaDownListener;
+	}
+
+	public void setWidth(int width) {
+		this.mWidth = width;
+		repaint();
+	}
+
+	/**
+	 * 右键事件
+	 * 
+	 * @author zhangliangming
+	 * 
+	 */
+	public interface MetaDownListener {
+		public void MetaDown(MouseEvent e);
+	}
+
+	public void setExtraLyricsListener(ExtraLyricsListener mExtraLyricsListener) {
+		this.mExtraLyricsListener = mExtraLyricsListener;
+	}
 
 	/**
 	 * 额外歌词事件
@@ -864,90 +1081,4 @@ public class FloatLyricsView extends JPanel {
 		 */
 		void noExtraLrcCallback();
 	}
-
-	private class MouseListener implements MouseInputListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			if (!BaseData.desLrcIsLock)
-				desLrcDialogMouseListener.mouseClicked(e);
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			if (!BaseData.desLrcIsLock)
-				desLrcDialogMouseListener.mousePressed(e);
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			if (!BaseData.desLrcIsLock)
-				desLrcDialogMouseListener.mouseReleased(e);
-			// setCursor(null);
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			if (!BaseData.desLrcIsLock) {
-				isEnter = true;
-				repaint();
-
-				desLrcDialogMouseListener.mouseEntered(e);
-			}
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			if (!BaseData.desLrcIsLock) {
-				isEnter = false;
-				repaint();
-				desLrcDialogMouseListener.mouseExited(e);
-			}
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) {
-
-			if (!BaseData.desLrcIsLock)
-				desLrcDialogMouseListener.mouseDragged(e);
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			if (!BaseData.desLrcIsLock)
-				desLrcDialogMouseListener.mouseMoved(e);
-		}
-
-	}
-
-	public void setExtraLyricsListener(ExtraLyricsListener mExtraLyricsListener) {
-		this.mExtraLyricsListener = mExtraLyricsListener;
-	}
-
-	public boolean getShow() {
-		return isShow;
-	}
-
-	public void setShow(boolean isShow) {
-		this.isShow = isShow;
-		repaint();
-	}
-
-	public void setEnter(boolean isEnter) {
-		this.isEnter = isEnter;
-		repaint();
-	}
-
-	public boolean getEnter() {
-		return isEnter;
-	}
-
-	public LyricsUtil getLyricsUtil() {
-		return mLyricsUtil;
-	}
-
-	public TreeMap<Integer, LyricsLineInfo> getLyricsLineTreeMap() {
-		return mLyricsLineTreeMap;
-	}
-
 }

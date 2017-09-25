@@ -32,7 +32,7 @@ public class TransliterationLrcComPanel extends JPanel {
 	private int mWidth, mHeight = 50;
 	private LyricsLineInfo inputLyricsLineInfo;
 	private LyricsLineInfo transliterationLyricsInfo;
-	private JTextField inputTranslateTextField;
+	private JTextField inputTransliterationTextField;
 	private TransliterationLineComPanel lineLyricsComPanel;
 
 	public TransliterationLrcComPanel(int width, LyricsLineInfo lyricsLineInfo,
@@ -60,15 +60,9 @@ public class TransliterationLrcComPanel extends JPanel {
 		lineLyricsComPanel.setBounds(10, 0, mWidth / 2 - 10, mHeight);
 
 		//
-		inputTranslateTextField = new JTextField();
-		if (transliterationLyricsInfo != null) {
-
-			inputTranslateTextField.setText(transliterationLyricsInfo
-					.getLineLyrics());
-
-		}
-		inputTranslateTextField.setDocument(new SpacePlainDocument());
-		inputTranslateTextField.getDocument().addDocumentListener(
+		inputTransliterationTextField = new JTextField();
+		inputTransliterationTextField.setDocument(new SpacePlainDocument());
+		inputTransliterationTextField.getDocument().addDocumentListener(
 				new DocumentListener() {
 
 					@Override
@@ -90,10 +84,16 @@ public class TransliterationLrcComPanel extends JPanel {
 
 					}
 				});
-		inputTranslateTextField.setBounds(mWidth / 2, 0, mWidth / 2 - 10,
+		if (transliterationLyricsInfo != null) {
+
+			inputTransliterationTextField.setText(transliterationLyricsInfo
+					.getLineLyrics());
+
+		}
+		inputTransliterationTextField.setBounds(mWidth / 2, 0, mWidth / 2 - 10,
 				mHeight);
 
-		this.add(inputTranslateTextField);
+		this.add(inputTransliterationTextField);
 		this.add(lineLyricsComPanel);
 	}
 
@@ -108,7 +108,7 @@ public class TransliterationLrcComPanel extends JPanel {
 			public void run() {
 
 				String[] origLyricsWords = inputLyricsLineInfo.getLyricsWords();
-				String lineLyrics = inputTranslateTextField.getText();
+				String lineLyrics = inputTransliterationTextField.getText();
 
 				String[] inputLyricsWords = getLyricsWords(lineLyrics);
 
@@ -167,8 +167,8 @@ public class TransliterationLrcComPanel extends JPanel {
 	 * 
 	 * @return
 	 */
-	public JTextField getInputTranslateTextField() {
-		return inputTranslateTextField;
+	public JTextField getInputTransliterationTextField() {
+		return inputTransliterationTextField;
 	}
 
 	/**
@@ -188,10 +188,10 @@ public class TransliterationLrcComPanel extends JPanel {
 				throws BadLocationException {
 			if (str.length() == 1 && Character.isSpaceChar(str.charAt(0))) {
 				String[] origLyricsWords = inputLyricsLineInfo.getLyricsWords();
-				String lineLyrics = inputTranslateTextField.getText();
+				String lineLyrics = inputTransliterationTextField.getText();
 				String[] inputLyricsWords = getLyricsWords(lineLyrics);
 
-				if (origLyricsWords.length == inputLyricsWords.length) {
+				if (origLyricsWords.length < inputLyricsWords.length) {
 					return;
 				}
 			}

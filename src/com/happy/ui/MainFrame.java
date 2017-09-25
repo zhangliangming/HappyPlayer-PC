@@ -61,6 +61,7 @@ public class MainFrame extends JFrame implements Observer {
 	 * 
 	 */
 	private MainOperatePanel mainOperatePanel;
+	private MainCenterPanel mainCenterPanel;
 
 	/**
 	 * 桌面歌词窗口
@@ -129,7 +130,7 @@ public class MainFrame extends JFrame implements Observer {
 		int moPanelX = 0;
 		int moPanelY = mainFrameHeight - moPanelHeight;
 		mainOperatePanel = new MainOperatePanel(desktopLrcDialog, moPanelWidth,
-				moPanelHeight);
+				moPanelHeight, this);
 		mainOperatePanel.setBounds(moPanelX, moPanelY, moPanelWidth,
 				moPanelHeight);
 		new PanelMoveFrame(mainOperatePanel, this);
@@ -140,8 +141,8 @@ public class MainFrame extends JFrame implements Observer {
 				- mainOperatePanel.getHeight();
 		int mcPanelX = 0;
 		int mcPanelY = mainMenuPanel.getHeight() - 0;
-		MainCenterPanel mainCenterPanel = new MainCenterPanel(desktopLrcDialog,
-				this, mcPanelWidth, mcPanelHeight);
+		mainCenterPanel = new MainCenterPanel(mainOperatePanel,desktopLrcDialog, this,
+				mcPanelWidth, mcPanelHeight);
 		mainCenterPanel.setBounds(mcPanelX, mcPanelY, mcPanelWidth,
 				mcPanelHeight);
 
@@ -176,6 +177,18 @@ public class MainFrame extends JFrame implements Observer {
 		return background;
 	}
 
+	/**
+	 * 中间面板
+	 * @return
+	 */
+	public MainCenterPanel getMainCenterPanel() {
+		return mainCenterPanel;
+	}
+
+	/**
+	 * 操作面板 
+	 * @return
+	 */
 	public MainOperatePanel getMainOperatePanel() {
 		return mainOperatePanel;
 	}

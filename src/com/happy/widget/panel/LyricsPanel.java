@@ -3,6 +3,7 @@ package com.happy.widget.panel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
@@ -27,6 +28,8 @@ import com.happy.model.SongMessage;
 import com.happy.observable.ObserverManage;
 import com.happy.util.LyricsUtil;
 import com.happy.widget.dialog.DesLrcDialog;
+import com.happy.widget.panel.lrc.ManyLineLyricsView;
+import com.happy.widget.panel.lrc.ManyLineLyricsView.MetaDownListener;
 
 /**
  * 歌词面板
@@ -41,15 +44,15 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// /**
-	// * 歌词面板
-	// */
-	// private ManyLineLyricsView manyLineLyricsView;
-	//
-	// /**
-	// * 鼠标右键事件
-	// */
-	// private MetaDownListener metaDownListener;
+	/**
+	 * 歌词面板
+	 */
+	private ManyLineLyricsView manyLineLyricsView;
+
+	/**
+	 * 鼠标右键事件
+	 */
+	private MetaDownListener metaDownListener;
 
 	/**
 	 * 歌词解析
@@ -105,13 +108,18 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private JRadioButtonMenuItem lrcSizeItem[] = new JRadioButtonMenuItem[BaseData.lrcSizeTip.length];
 
-	public LyricsPanel(DesLrcDialog desktopLrcDialog, int width, int height) {
+	public LyricsPanel(MainOperatePanel mainOperatePanel,
+			DesLrcDialog desktopLrcDialog, int width, int height) {
 		this.desktopLrcDialog = desktopLrcDialog;
 		initComponent(width, height);
 		initPopMenu();
 		// this.setBackground(Color.black);
 		ObserverManage.getObserver().addObserver(this);
 		this.setOpaque(false);
+
+		//
+		manyLineLyricsView.setExtraLyricsListener(mainOperatePanel
+				.getExtraLyricsListener());
 
 	}
 
@@ -200,11 +208,13 @@ public class LyricsPanel extends JPanel implements Observer {
 						if (e.getSource() == colorItem[i]) {
 
 							BaseData.lrcColorIndex = i;
-							MessageIntent messageIntent = new MessageIntent();
-							messageIntent
-									.setAction(MessageIntent.MANYLINELRCCOLOR);
-							ObserverManage.getObserver().setMessage(
-									messageIntent);
+//							MessageIntent messageIntent = new MessageIntent();
+//							messageIntent
+//									.setAction(MessageIntent.MANYLINELRCCOLOR);
+//							ObserverManage.getObserver().setMessage(
+//									messageIntent);
+							
+							manyLineLyricsView.refreshLrcFontColor();
 
 							break;
 						}
@@ -240,11 +250,13 @@ public class LyricsPanel extends JPanel implements Observer {
 						if (e.getSource() == lrcSizeItem[i]) {
 
 							BaseData.lrcFontSize = lrcSizeNum[i];
-							MessageIntent messageIntent = new MessageIntent();
-							messageIntent
-									.setAction(MessageIntent.MANYLINEFONTSIZE);
-							ObserverManage.getObserver().setMessage(
-									messageIntent);
+//							MessageIntent messageIntent = new MessageIntent();
+//							messageIntent
+//									.setAction(MessageIntent.MANYLINEFONTSIZE);
+//							ObserverManage.getObserver().setMessage(
+//									messageIntent);
+							
+							manyLineLyricsView.refreshLrcFontSize();
 
 							break;
 						}
@@ -277,17 +289,17 @@ public class LyricsPanel extends JPanel implements Observer {
 	 */
 	private void initComponent(int width, final int height) {
 		this.setLayout(new BorderLayout());
-		// manyLineLyricsView = new ManyLineLyricsView(width, height, true);
-		//
-		// metaDownListener = new MetaDownListener() {
-		//
-		// @Override
-		// public void MetaDown(MouseEvent e) {
-		// menuPop.show(manyLineLyricsView, e.getX(), e.getY());
-		// }
-		// };
-		// manyLineLyricsView.setMetaDownListener(metaDownListener);
-		// this.add(manyLineLyricsView, BorderLayout.CENTER);
+		manyLineLyricsView = new ManyLineLyricsView(width, height, true);
+
+		metaDownListener = new MetaDownListener() {
+
+			@Override
+			public void MetaDown(MouseEvent e) {
+				menuPop.show(manyLineLyricsView, e.getX(), e.getY());
+			}
+		};
+		manyLineLyricsView.setMetaDownListener(metaDownListener);
+		this.add(manyLineLyricsView, BorderLayout.CENTER);
 	}
 
 	@Override
@@ -351,19 +363,18 @@ public class LyricsPanel extends JPanel implements Observer {
 						mSongInfo.getSinger(), mSongInfo.getDisplayName(),
 						mSongInfo.getLyricsUrl(), SongMessage.KSCTYPELRC);
 
-				// manyLineLyricsView.setHasLrc(false);
+				manyLineLyricsView.setLyricsUtil(null);
 
 				desktopLrcDialog.getFloatLyricsView().setLyricsUtil(null);
 
 			} else if (songMessage.getType() == SongMessage.SERVICEPLAYINGMUSIC) {
 
-				// if (manyLineLyricsView.getHasLrc()
-				// && !manyLineLyricsView.getBlScroll()) {
-				//
-				// manyLineLyricsView.showLrc((int) mSongInfo
-				// .getPlayProgress());
-				//
-				// }
+				if (manyLineLyricsView.getLyricsUtil() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap().size() > 0) {
+					manyLineLyricsView.updateView((int) mSongInfo
+							.getPlayProgress());
+				}
 
 				if (desktopLrcDialog.getFloatLyricsView()
 						.getLyricsLineTreeMap() != null) {
@@ -374,12 +385,12 @@ public class LyricsPanel extends JPanel implements Observer {
 			} else if (songMessage.getType() == SongMessage.SERVICEPAUSEEDMUSIC
 					|| songMessage.getType() == SongMessage.SERVICESTOPEDMUSIC) {
 
-				// if (manyLineLyricsView.getHasLrc()
-				// && !manyLineLyricsView.getBlScroll()) {
-				//
-				// manyLineLyricsView.showLrc((int) mSongInfo
-				// .getPlayProgress());
-				// }
+				if (manyLineLyricsView.getLyricsUtil() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap() != null
+						&& manyLineLyricsView.getLyricsLineTreeMap().size() > 0) {
+					manyLineLyricsView.updateView((int) mSongInfo
+							.getPlayProgress());
+				}
 
 				if (desktopLrcDialog.getFloatLyricsView()
 						.getLyricsLineTreeMap() != null) {
@@ -389,8 +400,8 @@ public class LyricsPanel extends JPanel implements Observer {
 
 			}
 		} else {
-			// if (manyLineLyricsView != null)
-			// manyLineLyricsView.setHasLrc(false);
+			if (manyLineLyricsView != null)
+				manyLineLyricsView.setLyricsUtil(null);
 
 			if (desktopLrcDialog.getFloatLyricsView() != null) {
 				desktopLrcDialog.getFloatLyricsView().setLyricsUtil(null);
@@ -398,9 +409,9 @@ public class LyricsPanel extends JPanel implements Observer {
 		}
 	}
 
-	// public ManyLineLyricsView getManyLineLyricsView() {
-	// return manyLineLyricsView;
-	// }
+	public ManyLineLyricsView getManyLineLyricsView() {
+		return manyLineLyricsView;
+	}
 
 	/**
 	 * 
@@ -428,14 +439,11 @@ public class LyricsPanel extends JPanel implements Observer {
 			protected void done() {
 				lyricsLineTreeMap = lyricsParser.getDefLyricsLineTreeMap();
 				if (lyricsLineTreeMap != null && lyricsLineTreeMap.size() != 0) {
-					// manyLineLyricsView.init((int) duration, lyricsParser);
-					// manyLineLyricsView.setHasLrc(true);
-					//
-					// if (mSongInfo != null) {
-					// manyLineLyricsView.showLrc((int) mSongInfo
-					// .getPlayProgress());
-					//
-					// }
+					manyLineLyricsView.setLyricsUtil(lyricsParser);
+					if (mSongInfo != null) {
+						manyLineLyricsView.updateView((int) mSongInfo
+								.getPlayProgress());
+					}
 
 					desktopLrcDialog.getFloatLyricsView().setLyricsUtil(
 							lyricsParser);

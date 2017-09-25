@@ -81,11 +81,11 @@ public class BaseData {
 	/**
 	 * 歌词最小大小
 	 */
-	public static int lrcFontMinSize = 30;
+	public static int lrcFontMinSize = 20;
 	/**
 	 * 歌词最大大小
 	 */
-	public static int lrcFontMaxSize = 120;
+	public static int lrcFontMaxSize = 50;
 	/**
 	 * 歌词大小
 	 */

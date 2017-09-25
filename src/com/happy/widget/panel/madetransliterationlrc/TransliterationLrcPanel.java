@@ -161,7 +161,7 @@ public class TransliterationLrcPanel extends JPanel {
 			TransliterationLrcComPanel translateLrcComPanel = (TransliterationLrcComPanel) listViewPanel
 					.getComponent(i);
 			JTextField inputLrcJTextField = translateLrcComPanel
-					.getInputTranslateTextField();
+					.getInputTransliterationTextField();
 			String lineLyrics = inputLrcJTextField.getText();
 			if (!lineLyrics.equals("") && !flag) {
 				flag = true;

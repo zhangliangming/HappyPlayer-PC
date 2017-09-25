@@ -35,3 +35,605 @@
 2017-09-25 00:15:49 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
 2017-09-25 00:15:49 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
 2017-09-25 00:15:50 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 00:30:31 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 00:30:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 00:30:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 00:30:34 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 00:30:35 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 00:30:36 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 00:30:36 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 00:30:40 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 19:43:28 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 19:43:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 19:43:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 19:43:34 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 19:43:38 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 19:43:42 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 19:43:42 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 19:44:00 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 19:44:49 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 19:44:49 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 19:44:50 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 19:47:02 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 19:47:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 19:47:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 19:47:05 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 19:47:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 19:47:06 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 19:47:06 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 19:47:10 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 19:47:23 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 19:47:23 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 19:47:24 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 21:09:41 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:09:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 21:09:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 21:09:45 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 21:09:46 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 21:09:46 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:09:46 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:09:51 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:10:06 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 21:10:06 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 21:10:07 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 21:10:39 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:10:54 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:10:54 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:10:58 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:11:18 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 21:11:18 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 21:11:19 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 21:12:25 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:12:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 21:12:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 21:12:30 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 21:12:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 21:12:31 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:12:31 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:12:35 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:12:46 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 21:12:46 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 21:12:46 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 21:13:16 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:13:20 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 21:13:20 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 21:13:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 21:13:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 21:13:23 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:13:23 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:13:26 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:14:19 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:14:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 21:14:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 21:14:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 21:14:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 21:14:25 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:14:25 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:14:29 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:15:31 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 21:15:31 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 21:15:32 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 21:54:47 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 21:54:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 21:54:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 21:54:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 21:54:51 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 21:54:51 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 21:54:51 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 21:54:55 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 21:55:27 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 21:55:27 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 21:55:28 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:06:54 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:06:56 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:06:56 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:06:57 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:06:58 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:06:58 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:06:58 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:07:02 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:07:31 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:07:31 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:07:32 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:07:48 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:07:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:07:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:07:51 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:07:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:07:53 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:07:53 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:07:56 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:08:21 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:08:21 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:08:21 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:09:33 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:09:35 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:09:35 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:09:36 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:09:37 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:09:38 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:09:38 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:09:41 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:09:51 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:09:51 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:09:52 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:10:30 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:10:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:10:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:10:32 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:10:32 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:10:33 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:10:33 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:10:37 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:10:51 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:10:51 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:10:53 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:12:05 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:12:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:12:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:12:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:12:08 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:12:08 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:12:08 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:12:11 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:12:15 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:12:15 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:12:16 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:12:50 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:12:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:12:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:12:53 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:12:54 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:12:54 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:12:54 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:12:56 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:13:12 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:13:12 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:13:12 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:14:23 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:14:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:14:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:14:25 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:14:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:14:26 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:14:26 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:14:30 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:15:12 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:15:12 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:15:13 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:15:26 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:15:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:15:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:15:29 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:15:30 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:15:30 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:15:30 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:15:32 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:16:06 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:16:06 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:16:07 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:16:19 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:16:21 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:16:21 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:16:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:16:22 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:16:23 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:16:23 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:16:26 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:18:01 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:18:02 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:18:02 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:18:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:18:04 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:18:04 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:18:05 <@zhangliangming@ [com.happy.db.SongInfoDB:56 <init>] - java.sql.SQLException: Failed to start database 'c:\haplayer\db\', see the next exception for details.>
+2017-09-25 22:18:05 <@zhangliangming@ [com.happy.db.SongInfoDB:153 getSongList] - java.sql.SQLException: Failed to start database 'c:\haplayer\db\', see the next exception for details.>
+2017-09-25 22:18:05 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:18:05 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:18:06 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:18:08 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:18:17 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:18:17 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:18:19 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:18:41 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:18:43 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:18:43 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:18:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:18:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:18:45 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:18:45 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:18:48 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:18:54 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:18:54 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:18:56 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:19:03 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:19:05 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:19:05 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:19:05 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:19:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:19:06 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:19:06 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:19:08 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:19:40 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:19:40 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:19:41 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:20:25 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:20:27 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:20:27 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:20:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:20:29 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:20:29 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:20:29 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:20:33 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:20:37 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:20:37 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:20:38 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:20:49 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:20:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:20:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:20:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:20:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:20:53 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:20:53 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:20:55 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:21:07 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:21:07 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:21:08 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:21:16 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:21:18 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:21:18 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:21:19 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:21:20 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:21:20 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:21:20 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:21:23 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:21:32 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:21:32 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:21:33 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:21:46 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:21:48 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:21:48 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:21:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:21:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:21:49 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:21:49 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:21:51 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:22:10 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:22:10 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:22:11 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:22:30 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:22:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:22:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:22:32 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:22:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:22:33 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:22:33 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:22:35 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:22:44 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:22:44 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:22:45 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:22:56 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:22:57 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:22:57 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:22:58 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:22:59 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:23:00 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:23:00 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:23:03 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:23:08 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:23:08 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:23:09 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:23:32 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:23:34 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:23:34 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:23:35 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:23:36 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:23:36 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:23:36 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:23:38 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:24:08 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:24:08 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:24:08 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:24:22 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:24:23 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:24:23 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:24:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:24:25 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:24:25 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:24:25 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:24:29 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:24:37 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:24:37 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:24:38 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:25:04 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:25:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:25:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:25:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:25:08 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:25:09 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:25:09 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:25:12 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:26:07 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:26:07 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:26:09 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:26:25 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:26:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:26:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:26:29 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:26:30 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:26:31 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:26:31 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:26:34 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:27:05 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:27:05 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:27:06 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:27:51 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:27:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:27:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:27:53 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:27:54 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:27:55 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:27:55 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:27:57 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:28:08 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:28:08 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:28:10 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:28:27 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:28:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:28:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:28:29 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:28:30 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:28:30 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:28:30 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:28:33 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:28:43 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:28:43 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:28:44 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:28:53 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:28:54 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:28:54 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:28:56 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:28:56 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:28:57 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:28:57 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:29:00 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:29:09 <@zhangliangming@ [com.happy.ui.MainFrame:190 exitPlayer] - 准备退出播放器>
+2017-09-25 22:29:09 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:29:10 <@zhangliangming@ [com.happy.ui.MainFrame:192 exitPlayer] - 退出成功>
+2017-09-25 22:47:28 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:47:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:47:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:47:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:47:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:47:34 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:47:34 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:49:03 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:49:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:49:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:49:08 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:49:09 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:49:09 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:49:09 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:53:04 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:53:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:53:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:53:09 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:53:10 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:53:10 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:53:10 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 22:53:12 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 22:54:09 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 22:54:09 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 22:54:10 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 22:55:07 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 22:55:10 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 22:55:10 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 22:55:11 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 22:55:12 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 22:55:12 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 22:55:12 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:01:53 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:01:55 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:01:55 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:01:56 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:01:57 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:01:58 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:01:58 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:02:23 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:02:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:02:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:02:27 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:02:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:02:29 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:02:29 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:02:32 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:02:58 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:02:58 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:02:59 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:19:48 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:19:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:19:52 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:19:53 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:19:54 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:19:55 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:19:55 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:19:59 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:20:25 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:20:25 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:20:26 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:21:42 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:21:45 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:21:45 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:21:46 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:21:46 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:21:47 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:21:47 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:21:51 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:21:54 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:21:54 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:21:55 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:23:11 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:23:14 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:23:14 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:23:16 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:23:17 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:23:17 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:23:17 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:23:22 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:23:34 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:23:34 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:23:35 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:26:55 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:26:58 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:26:58 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:26:59 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:27:00 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:27:01 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:27:01 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:27:05 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:27:10 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:27:10 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:27:12 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:28:00 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:28:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:28:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:28:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:28:06 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:28:07 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:28:07 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:28:10 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:28:20 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:28:20 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:28:21 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:28:44 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:28:47 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:28:47 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:28:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:28:50 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:28:51 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:28:51 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:28:55 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:29:13 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:29:13 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:29:14 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:30:05 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:30:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:30:07 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:30:08 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:30:09 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:30:10 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:30:10 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:30:14 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:30:16 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:30:16 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:30:17 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:33:46 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:33:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:33:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:33:51 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:33:51 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:33:52 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:33:52 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:33:56 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:34:03 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:34:03 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:34:04 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:34:23 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:34:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:34:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:34:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:34:28 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:34:29 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:34:29 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:34:32 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:34:38 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:34:38 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:34:39 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:36:22 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:36:25 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:36:25 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:36:26 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:36:27 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:36:28 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:36:28 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:36:31 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:37:16 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:37:16 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:37:17 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:39:14 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:39:16 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:39:16 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:39:17 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:39:18 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:39:19 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:39:19 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:39:22 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:39:28 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:39:28 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:39:29 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:42:21 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:42:23 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:42:23 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:42:24 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:42:25 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:42:25 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:42:25 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:42:30 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:43:12 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:43:12 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:43:13 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:43:30 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:43:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:43:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:43:34 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:43:35 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:43:36 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:43:36 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:43:39 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:44:15 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:44:15 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:44:16 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:50:59 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:51:02 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:51:02 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:51:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:51:04 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:51:05 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:51:05 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:51:09 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:51:46 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:51:46 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:51:47 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:55:41 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:55:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:55:44 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:55:45 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:55:46 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:55:46 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:55:46 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:55:51 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:56:34 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:56:34 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:56:35 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:57:29 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:57:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:57:31 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:57:32 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:57:33 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:57:33 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:57:33 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:57:37 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-25 23:58:19 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-25 23:58:19 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-25 23:58:20 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>
+2017-09-25 23:59:44 <@zhangliangming@ [com.happy.util.DataUtil:24 init] - 开始加载初始数据.....>
+2017-09-25 23:59:47 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - baseDataTbl 表已经存在!不用创建!>
+2017-09-25 23:59:47 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - tabVersionTbl 表已经存在!不用创建!>
+2017-09-25 23:59:48 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - categoryTbl 表已经存在!不用创建!>
+2017-09-25 23:59:49 <@zhangliangming@ [com.happy.db.DBUtils:52 isTableExist] - songTbl 表已经存在!不用创建!>
+2017-09-25 23:59:49 <@zhangliangming@ [com.happy.util.DataUtil:27 init] - 初始数据加载完成.....>
+2017-09-25 23:59:49 <@zhangliangming@ [com.happy.service.MediaPlayerService:70 init] - 播放器服务启动>
+2017-09-25 23:59:53 <@zhangliangming@ [com.happy.enterProgram.EnterProgram:61 init] - 启动界面完成>
+2017-09-26 00:00:11 <@zhangliangming@ [com.happy.ui.MainFrame:203 exitPlayer] - 准备退出播放器>
+2017-09-26 00:00:11 <@zhangliangming@ [com.happy.util.DataUtil:72 saveData] - 保存数据>
+2017-09-26 00:00:12 <@zhangliangming@ [com.happy.ui.MainFrame:205 exitPlayer] - 退出成功>

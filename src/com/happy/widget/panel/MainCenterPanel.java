@@ -39,7 +39,13 @@ public class MainCenterPanel extends JPanel {
 	private LyricsPanel lyricsPanel;
 
 	private DesLrcDialog desktopLrcDialog;
-	public MainCenterPanel(DesLrcDialog desktopLrcDialog, MainFrame mainFrame, int width, int height) {
+
+	private MainOperatePanel mainOperatePanel;
+
+	public MainCenterPanel(MainOperatePanel mainOperatePanel,
+			DesLrcDialog desktopLrcDialog, MainFrame mainFrame, int width,
+			int height) {
+		this.mainOperatePanel = mainOperatePanel;
 		this.desktopLrcDialog = desktopLrcDialog;
 		this.mainFrame = mainFrame;
 		this.mWidth = width;
@@ -79,7 +85,7 @@ public class MainCenterPanel extends JPanel {
 				songListPanel.setVisible(false);
 				hideButton.setVisible(false);
 				//
-//				lyricsPanel.getManyLineLyricsView().setWidth(mWidth);
+				lyricsPanel.getManyLineLyricsView().setWidth(mWidth);
 			}
 		});
 
@@ -96,8 +102,8 @@ public class MainCenterPanel extends JPanel {
 				showButton.setVisible(false);
 				songListPanel.setVisible(true);
 				//
-//				lyricsPanel.getManyLineLyricsView().setWidth(
-//						mWidth - slPanelWidth);
+				lyricsPanel.getManyLineLyricsView().setWidth(
+						mWidth - slPanelWidth);
 			}
 		});
 		showButton.setVisible(false);
@@ -105,11 +111,16 @@ public class MainCenterPanel extends JPanel {
 		// 歌词面板
 		int lWidth = mWidth - slPanelWidth;
 		int lHeight = mHeight;
-		lyricsPanel = new LyricsPanel(desktopLrcDialog,lWidth, lHeight);
+		lyricsPanel = new LyricsPanel(mainOperatePanel, desktopLrcDialog,
+				lWidth, lHeight);
 		this.add(songListPanel);
 		this.add(hideButton);
 		this.add(showButton);
 		this.add(lyricsPanel);
+	}
+
+	public LyricsPanel getLyricsPanel() {
+		return lyricsPanel;
 	}
 
 	public SongListPanel getSongListPanel() {
