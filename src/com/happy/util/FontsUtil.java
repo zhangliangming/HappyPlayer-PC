@@ -49,6 +49,6 @@ public class FontsUtil {
 	 * @return
 	 */
 	public static Font getBaseFont(int fontSize) {
-		return getFontByFile(fontFilePath, Font.PLAIN, fontSize);
+		return getFontByFile(fontFilePath, Font.TRUETYPE_FONT, fontSize);
 	}
 }

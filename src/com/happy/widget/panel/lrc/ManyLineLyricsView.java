@@ -1,5 +1,6 @@
 package com.happy.widget.panel.lrc;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.Transparency;
 import java.awt.event.MouseEvent;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,6 +29,10 @@ import javax.swing.event.MouseInputListener;
 import com.happy.common.BaseData;
 import com.happy.common.Constants;
 import com.happy.lyrics.model.LyricsLineInfo;
+import com.happy.lyrics.utils.TimeUtils;
+import com.happy.manage.MediaManage;
+import com.happy.model.SongMessage;
+import com.happy.observable.ObserverManage;
 import com.happy.tween.ValueAnimator;
 import com.happy.tween.ValueAnimator.AnimationListener;
 import com.happy.tween.ValueAnimator.AnimatorUpdateListener;
@@ -72,15 +78,9 @@ public class ManyLineLyricsView extends JPanel {
 	private int mAlphaValue = 0;
 
 	/**
-	 * 是否画时间线
-	 * 
-	 * **/
-	private boolean mIsDrawTimeLine = false;
-
-	/**
 	 * Y轴移动的时间
 	 */
-	private int mDuration = 200;
+	private int mDuration = 250;
 
 	/**
 	 * 歌词在Y轴上的偏移量
@@ -196,6 +196,11 @@ public class ManyLineLyricsView extends JPanel {
 	 */
 	private ValueAnimator mValueAnimator;
 
+	/**
+	 * 正在拖动
+	 */
+	private boolean isTouchMove = false;
+
 	public ManyLineLyricsView(int width, int height, boolean hasLrcEvent) {
 		this.mWidth = width;
 		this.mHeight = height;
@@ -230,7 +235,8 @@ public class ManyLineLyricsView extends JPanel {
 	 * 初始化字体大小
 	 */
 	private void initSizeWord() {
-		mBaseFont = mBaseFont.deriveFont(Font.PLAIN, BaseData.lrcFontSize);
+		mBaseFont = mBaseFont.deriveFont(Font.TRUETYPE_FONT,
+				BaseData.lrcFontSize);
 	}
 
 	/**
@@ -254,12 +260,38 @@ public class ManyLineLyricsView extends JPanel {
 
 		//
 		g2d.setFont(mBaseFont);
+
+		// 画时间线和时间线
+		if (isTouchMove) {
+			drawTimeLine(g2d);
+		}
+
 		if (mLyricsLineTreeMap == null || mLyricsLineTreeMap.size() == 0) {
 			drawDefText(g2d);
 		} else {
 			// 绘画多行歌词
 			drawManyLineLrcText(g2d);
 		}
+	}
+
+	/**
+	 * 画时间线
+	 * 
+	 * @param g2d
+	 */
+	private void drawTimeLine(Graphics2D g2d) {
+		g2d.setPaint(Color.WHITE);
+		g2d.setStroke(new BasicStroke(2f));
+
+		float y = mHeight / 2;
+		// 画当前时间
+		int scrollLrcLineNum = getScrollLrcLineNum(g2d, mOffsetY);
+		int startTime = mLyricsLineTreeMap.get(scrollLrcLineNum).getStartTime();
+		String timeString = TimeUtils.parseString(startTime);
+
+		int textHeight = getTextHeight(g2d);
+		g2d.drawString(timeString, 0, y - textHeight);
+		g2d.drawLine(0, (int) y, mWidth, (int) y);
 	}
 
 	/**
@@ -512,7 +544,8 @@ public class ManyLineLyricsView extends JPanel {
 		FontMetrics fm = origG2d.getFontMetrics();
 		Rectangle2D rc = fm.getStringBounds(text, origG2d);
 		int width = (int) rc.getWidth();
-		int height = (int) rc.getHeight() + fm.getDescent() * 2 + mSpaceLineHeight;
+		int height = (int) rc.getHeight() + fm.getDescent() * 2
+				+ mSpaceLineHeight;
 		width = Math.max(width, 1);
 		height = Math.max(height, 1);
 
@@ -680,6 +713,45 @@ public class ManyLineLyricsView extends JPanel {
 	}
 
 	/**
+	 * 获取滑动的当前行
+	 * 
+	 * @return
+	 */
+	private int getScrollLrcLineNum(Graphics2D g2d, float offsetY) {
+		if (mLyricsLineTreeMap == null || mLyricsLineTreeMap.size() == 0) {
+			return 0;
+		}
+
+		int scrollLrcLineNum = -1;
+		int lineHeight = 0;
+		for (int i = 0; i < mLyricsLineTreeMap.size(); i++) {
+			lineHeight += getLineHeight(g2d);
+
+			// 判断是否有翻译歌词或者音译歌词
+			if (mExtraLrcStatus == SHOWTRANSLATELRC) {
+				if (mTranslateLrcLineInfos != null
+						&& mTranslateLrcLineInfos.size() > 0) {
+					lineHeight += getExtraLrcLineHeight(g2d);
+				}
+			} else if (mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
+				if (mTransliterationLrcLineInfos != null
+						&& mTransliterationLrcLineInfos.size() > 0) {
+					lineHeight += getExtraLrcLineHeight(g2d);
+				}
+			}
+
+			if (lineHeight > offsetY) {
+				scrollLrcLineNum = i;
+				break;
+			}
+		}
+		if (scrollLrcLineNum == -1) {
+			scrollLrcLineNum = mLyricsLineTreeMap.size() - 1;
+		}
+		return scrollLrcLineNum;
+	}
+
+	/**
 	 * 更新歌词
 	 */
 	public void updateView(int playProgress) {
@@ -691,7 +763,8 @@ public class ManyLineLyricsView extends JPanel {
 		int newLyricsLineNum = mLyricsUtil.getLineNumber(mLyricsLineTreeMap,
 				playProgress);
 		if (newLyricsLineNum != mLyricsLineNum) {
-			smoothScrollTo(mLyricsLineNum, newLyricsLineNum);
+			if (!isTouchMove)
+				smoothScrollTo(newLyricsLineNum);
 			mLyricsLineNum = newLyricsLineNum;
 		}
 		// 获取歌词字索引
@@ -739,7 +812,7 @@ public class ManyLineLyricsView extends JPanel {
 	 * @param lyricsLineNum
 	 * @param newLyricsLineNum
 	 */
-	private void smoothScrollTo(int lyricsLineNum, int newLyricsLineNum) {
+	private void smoothScrollTo(int newLyricsLineNum) {
 		if (mValueAnimator == null) {
 			mValueAnimator = new ValueAnimator();
 		} else {
@@ -752,7 +825,7 @@ public class ManyLineLyricsView extends JPanel {
 		Graphics2D g2d = (Graphics2D) getGraphics();
 		g2d.setFont(mBaseFont);
 
-		float start = getCurLineScollHeight(g2d, lyricsLineNum);
+		float start = mOffsetY;
 		float end = getCurLineScollHeight(g2d, newLyricsLineNum);
 
 		mValueAnimator.ofFloat(start, end);
@@ -776,6 +849,7 @@ public class ManyLineLyricsView extends JPanel {
 			public void onAnimationEnd(float curValue) {
 			}
 		});
+		mValueAnimator.setDuration(mDuration);
 		mValueAnimator.start();
 
 	}
@@ -916,6 +990,13 @@ public class ManyLineLyricsView extends JPanel {
 	 */
 	private LrcScrollListener lrcScrollListener;
 
+	/**
+	 * 当触摸歌词View时，保存为当前触点的Y轴坐标
+	 * 
+	 * 滑动的进度
+	 */
+	private float touchY = 0;
+
 	private class LrcScrollListener implements MouseInputListener {
 
 		@Override
@@ -945,7 +1026,9 @@ public class ManyLineLyricsView extends JPanel {
 				// 设置鼠标的图标
 				setCursor(draggedCursor);
 
-				mIsDrawTimeLine = true;
+				float tt = e.getY();
+				touchY = tt;
+				isTouchMove = true;
 
 				repaint();
 
@@ -972,7 +1055,66 @@ public class ManyLineLyricsView extends JPanel {
 				// 设置鼠标的图标
 				setCursor(pressedCursor);
 
-				mIsDrawTimeLine = false;
+				//
+				float tt = e.getY();
+				touchY = tt;
+
+				Graphics2D g2d = (Graphics2D) getGraphics();
+				g2d.setFont(mBaseFont);
+				// 获取当前滑动到的歌词播放行
+				int scrollLrcLineNum = getScrollLrcLineNum(g2d, mOffsetY);
+
+				if (mOffsetY < 0) {
+
+					smoothScrollTo(0);
+					isTouchMove = false;
+					return;
+
+				} else if (mOffsetY > getCurLineScollHeight(g2d,
+						mLyricsLineTreeMap.size())) {
+
+					smoothScrollTo(mLyricsLineTreeMap.size() - 1);
+					isTouchMove = false;
+					return;
+				}
+
+				int startTime = mLyricsLineTreeMap.get(scrollLrcLineNum)
+						.getStartTime();
+
+				int theFristWordTime = mLyricsLineTreeMap.get(scrollLrcLineNum)
+						.getWordsDisInterval()[0];
+				startTime += theFristWordTime;
+				//
+				if (MediaManage.getMediaManage().getSongInfo() != null) {
+					if (startTime > MediaManage.getMediaManage().getSongInfo()
+							.getDuration()) {
+						startTime = (int) MediaManage.getMediaManage()
+								.getSongInfo().getDuration();
+					}
+				}
+
+				SongMessage songMessage = new SongMessage();
+				songMessage.setType(SongMessage.SEEKTOMUSIC);
+				songMessage.setProgress(startTime);
+				ObserverManage.getObserver().setMessage(songMessage);
+
+				// 延迟刷新歌词，避免歌词出现闪烁
+				new Thread() {
+
+					@Override
+					public void run() {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						isTouchMove = false;
+						repaint();
+					}
+
+				}.start();
+
+				repaint();
 			}
 		}
 
@@ -1013,6 +1155,21 @@ public class ManyLineLyricsView extends JPanel {
 				}
 				// 设置鼠标的图标
 				setCursor(draggedCursor);
+				float tt = e.getY();
+
+				touchY = tt - touchY;
+
+				Graphics2D g2d = (Graphics2D) getGraphics();
+				g2d.setFont(mBaseFont);
+				if (mOffsetY < 0) {
+					touchY = touchY / 2;
+				} else if (mOffsetY > getCurLineScollHeight(g2d,
+						mLyricsLineTreeMap.size())) {
+					touchY = touchY / 2;
+				}
+
+				mOffsetY -= touchY;
+				touchY = tt;
 
 				repaint();
 			}
@@ -1080,5 +1237,43 @@ public class ManyLineLyricsView extends JPanel {
 		 * 无翻译和音译歌词回调
 		 */
 		void noExtraLrcCallback();
+	}
+
+	// 定义一个三角形类
+	class Triangle {
+		private Point p1;
+		private Point p2;
+		private Point p3;
+
+		private GeneralPath path;
+
+		// 使用三个点构建一个三角形
+		public Triangle(Point p1, Point p2, Point p3) {
+			this.p1 = p1;
+			this.p2 = p2;
+			this.p3 = p3;
+			this.path = buildPath();
+		}
+
+		// 绘制三角形边
+		public void draw(Graphics2D g2d) {
+			g2d.draw(path);
+		}
+
+		// 填充三角形
+		public void fill(Graphics2D g2d) {
+			g2d.fill(path);
+		}
+
+		// 创建三角形外形的路径
+		private GeneralPath buildPath() {
+			path = new GeneralPath();
+			path.moveTo(p1.x, p1.y);
+			path.lineTo(p2.x, p2.y);
+			path.lineTo(p3.x, p3.y);
+			path.closePath();
+
+			return path;
+		}
 	}
 }
