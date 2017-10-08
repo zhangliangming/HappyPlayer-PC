@@ -38,8 +38,8 @@ hrc歌词的优化
 
 
 #3.界面设计
-
-
+- 应用入口
+com.happy.enterProgram.EnterProgram
 - 主界面
 - 标题栏：MainMenuPanel
 - 中间界面：MainCenterPanel
