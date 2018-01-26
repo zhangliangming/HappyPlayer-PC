@@ -101,6 +101,13 @@ http://zhangliangming.github.io/
 
 # 捐赠 #
 如果该项目对您有所帮助，欢迎您的赞赏
-![](https://i.imgur.com/HP749lm.jpg)
 
-![](https://i.imgur.com/T6TKMKt.jpg)
+- 微信
+- 
+![](https://i.imgur.com/e3hERHh.png)
+
+
+
+- 支付宝
+- 
+![](https://i.imgur.com/29AcEPA.png)
