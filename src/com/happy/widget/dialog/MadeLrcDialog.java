@@ -331,7 +331,7 @@ public class MadeLrcDialog extends JDialog {
 					if (lyricsInfo != null) {
 						File hrcsFile = new File(Constants.PATH_LYRICS
 								+ File.separator + songInfo.getDisplayName()
-								+ ".hrcs");
+								+ ".hrc");
 
 						LyricsFileWriter lyricsFileWriter = LyricsIOUtils
 								.getLyricsFileWriter(hrcsFile);
