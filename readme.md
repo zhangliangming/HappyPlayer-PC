@@ -10,27 +10,27 @@
 - 2017-09-20：因为读取歌词的时候，将歌词格式编码都设置为utf-8,所以解析之前的歌词时，会造成乱码问题，到时有乱码，只要将utf-8编码修改一下即可。
 - 2017-09-20：基于krc歌词，研究和生成新的hrcs歌词格式，支持翻译歌词和音译歌词。
 
-#1.音频解码器
+# 音频解码器 #
   对musique 播放器的解码器进行优化和修改，这里我将它项目使用到的核心解码代码，
   抽取出来封装成一个jar包，方便以后移植到其它的项目中。其项目源地址：[https://github.com/tulskiy/musique.git](https://github.com/tulskiy/musique.git)，该项目十分强大，推荐大家看一下他的源码。
-#2.歌词解析器
+# 歌词解析器 #
 
 乐乐第一个版本，使用的是KSC卡拉OK的歌词格式，
 该歌词格式，虽然可以实现动态歌词的效果，
 解析也方便，但是该歌词文件的大小差不多是酷狗krc文件的两倍多，
 所以在存储时还是占用了比较大的空间。
-#hrc (happy lyrics)歌词
+## hrc (happy lyrics)歌词 ##
 
 乐乐第二个版本，使用自定义的歌词格式文件hrc (happy lyrics) 。
 该版本可自制歌词并生成hrc歌词，它与酷狗krc比较，感觉还是不错的，占空间小了好多。
-#ksc歌词
-#krc酷狗歌词
+## ksc歌词 ##
+## krc酷狗歌词 ##
 
-#3.程序入口
+# 程序入口 #
 
 com.happy.enterProgram.EnterProgram
 
-#4.参考博客
+# 参考博客 #
 
 - [酷狗的krc歌词文件的解析](http://blog.csdn.net/qingzi635533/article/details/30231733)
 
@@ -38,7 +38,7 @@ com.happy.enterProgram.EnterProgram
 - [iOS音乐播放器开发(扩展)-歌词格式](http://www.jianshu.com/p/f6e7c8b9b2a3)
 
 
-#5.效果图
+# 效果图 #
 
 ![](https://i.imgur.com/DJDEWqE.png)
 
@@ -73,8 +73,8 @@ com.happy.enterProgram.EnterProgram
 ![](https://i.imgur.com/Hr7NtgA.png)
 
 
-#6.博客地址
+# 博客地址 #
 [http://zhangliangming.github.io/](http://zhangliangming.github.io/)
 
-#7.android版本播放器
+# android版本播放器 #
 [https://github.com/zhangliangming/HappyPlayer5.git](https://github.com/zhangliangming/HappyPlayer5.git)
