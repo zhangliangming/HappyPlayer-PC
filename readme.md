@@ -1,3 +1,5 @@
+# 简介 #
+乐乐音乐是基于musique 开源播放器开发的java swing音乐播放器，实现了mp3、flac、ape、wav等多种音频格式的播放和ksc歌词的解析、制作和显示。
 # 更新日志 #
 - 2017-09-27：实现歌词快进功能
 - 2017-09-26：初步实现多行歌词优化。
@@ -7,19 +9,10 @@
 - 2017-09-20：添加生成翻译歌词功能。（暂时不支持翻译歌词预览，有兴趣可到下面的链接查看android版本的播放器）
 - 2017-09-20：因为读取歌词的时候，将歌词格式编码都设置为utf-8,所以解析之前的歌词时，会造成乱码问题，到时有乱码，只要将utf-8编码修改一下即可。
 - 2017-09-20：基于krc歌词，研究和生成新的hrcs歌词格式，支持翻译歌词和音译歌词。
-# android版本播放器 #
-该版本播放器已经实现和支持翻译歌词和音译歌词。链接：https://github.com/zhangliangming/HappyPlayer5.git
 
-# HappyPlayer-PC
 #1.音频解码器
   对musique 播放器的解码器进行优化和修改，这里我将它项目使用到的核心解码代码，
-  抽取出来封装成一个jar包，方便以后移植到其它的项目中。
-  其项目源地址：
-大神的播放器（支持多种音频格式）
-
-java swing版本：https://github.com/tulskiy/musique.git
-
-  该项目十分强大，推荐大家看一下他的源码。
+  抽取出来封装成一个jar包，方便以后移植到其它的项目中。其项目源地址：[https://github.com/tulskiy/musique.git](https://github.com/tulskiy/musique.git)，该项目十分强大，推荐大家看一下他的源码。
 #2.歌词解析器
 
 乐乐第一个版本，使用的是KSC卡拉OK的歌词格式，
@@ -30,35 +23,19 @@ java swing版本：https://github.com/tulskiy/musique.git
 
 乐乐第二个版本，使用自定义的歌词格式文件hrc (happy lyrics) 。
 该版本可自制歌词并生成hrc歌词，它与酷狗krc比较，感觉还是不错的，占空间小了好多。
-#hrcx (happy lyrics)歌词
-
-hrc歌词的优化
-
+#ksc歌词
 #krc酷狗歌词
 
+#3.程序入口
 
-#3.界面设计
-- 应用入口
 com.happy.enterProgram.EnterProgram
-- 主界面
-- 标题栏：MainMenuPanel
-- 中间界面：MainCenterPanel
-- 底部界面：MainOperatePanel
-- 中间界面：X轴的BoxLayout，方便点击可隐藏/展开
-- 播放列表面板：SongListPanel
-- 列表Item面板：
-- 列表标题栏面板：
-- 列表下的歌曲列表内容面板：
-- 列表下的歌曲列表Item面板：
-- 歌词面板：LyricsPanel
-- 多行歌词面板：ManyLineLyricsView
-- 桌面歌词面板
 
 #4.参考博客
 
+- [酷狗的krc歌词文件的解析](http://blog.csdn.net/qingzi635533/article/details/30231733)
 
-- http://blog.csdn.net/qingzi635533/article/details/30231733
-- http://www.jianshu.com/p/f6e7c8b9b2a3
+
+- [iOS音乐播放器开发(扩展)-歌词格式](http://www.jianshu.com/p/f6e7c8b9b2a3)
 
 
 #5.效果图
@@ -97,15 +74,7 @@ com.happy.enterProgram.EnterProgram
 
 
 #6.博客地址
-http://zhangliangming.github.io/
+[http://zhangliangming.github.io/](http://zhangliangming.github.io/)
 
-# 捐赠 #
-如果该项目对您有所帮助，欢迎您的赞赏
-
-- 微信
-
-![](https://i.imgur.com/e3hERHh.png)
-
-- 支付宝
-
-![](https://i.imgur.com/29AcEPA.png)
+#7.android版本播放器
+[https://github.com/zhangliangming/HappyPlayer5.git](https://github.com/zhangliangming/HappyPlayer5.git)
