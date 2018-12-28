@@ -78,3 +78,14 @@ com.happy.enterProgram.EnterProgram
 
 # android版本播放器 #
 [https://github.com/zhangliangming/HappyPlayer5.git](https://github.com/zhangliangming/HappyPlayer5.git)
+
+# 捐赠 #
+如果该项目对您有所帮助，欢迎您的赞赏
+
+- 微信
+
+![](https://i.imgur.com/hOs6tPn.png)
+
+- 支付宝
+
+![](https://i.imgur.com/DGB9Lq0.png)
