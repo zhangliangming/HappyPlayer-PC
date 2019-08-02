@@ -101,8 +101,8 @@ public class ValueAnimator {
 
 	public void cancel() {
 		isFinish = true;
-		// if (manager != null)
-		// manager.clear();
+		if (manager != null)
+			manager.clear();
 		if (animationListener != null) {
 			animationListener.onAnimationEnd(particule.getY());
 		}
