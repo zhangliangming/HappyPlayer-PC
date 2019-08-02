@@ -80,7 +80,7 @@ public class ManyLineLyricsView extends JPanel {
 	/**
 	 * Y轴移动的时间
 	 */
-	private int mDuration = 250;
+	private int mDuration = 500;
 
 	/**
 	 * 歌词在Y轴上的偏移量
@@ -819,7 +819,7 @@ public class ManyLineLyricsView extends JPanel {
 			if (mValueAnimator.isRunning()) {
 				mValueAnimator.cancel();
 			}
-			mValueAnimator = new ValueAnimator();
+			//mValueAnimator = new ValueAnimator();
 		}
 
 		Graphics2D g2d = (Graphics2D) getGraphics();
