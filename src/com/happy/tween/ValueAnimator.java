@@ -34,9 +34,9 @@ public class ValueAnimator {
 	 * @param start
 	 * @param end
 	 */
-	public void ofFloat(float start, float end) {
-
-		particule = new Particule();
+	public synchronized void ofFloat(float start, float end) {
+		if (particule == null)
+			particule = new Particule();
 		particule.setX(0);
 		particule.setY(start);
 
