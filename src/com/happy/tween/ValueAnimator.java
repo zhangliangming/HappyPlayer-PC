@@ -69,7 +69,7 @@ public class ValueAnimator {
 
 						while (true && !isFinish) {
 							try {
-								Thread.sleep(10);
+								Thread.sleep(50);
 								if (animatorUpdateListener != null) {
 									animatorUpdateListener
 											.onAnimationUpdate(particule.getY());
