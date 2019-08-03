@@ -208,8 +208,9 @@ public class ManyLineLyricsView extends JPanel {
 		mShadeHeight = height / 4;
 		//
 		mAlphaValue = mShadeHeight / (mMaxAlphaValue - mMinAlphaValue);
-		mBaseFont = FontsUtil.getBaseFont(BaseData.appFontSize);
-		mDefText = Constants.APPTIPTITLE;
+		mBaseFont = FontsUtil.getBaseFont(Integer
+				.parseInt(Constants.APP_FONTSIZE));
+		mDefText = Constants.APP_NAME;
 
 		initSizeWord();
 		initColor();
@@ -287,7 +288,7 @@ public class ManyLineLyricsView extends JPanel {
 		// 画当前时间
 		int scrollLrcLineNum = getScrollLrcLineNum(g2d, mOffsetY);
 		int startTime = mLyricsLineTreeMap.get(scrollLrcLineNum).getStartTime();
-		String timeString = TimeUtils.parseString(startTime);
+		String timeString = TimeUtils.parseMMSSString(startTime);
 
 		int textHeight = getTextHeight(g2d);
 		g2d.drawString(timeString, 0, y - textHeight);
@@ -819,7 +820,7 @@ public class ManyLineLyricsView extends JPanel {
 			if (mValueAnimator.isRunning()) {
 				mValueAnimator.cancel();
 			}
-			//mValueAnimator = new ValueAnimator();
+			// mValueAnimator = new ValueAnimator();
 		}
 
 		Graphics2D g2d = (Graphics2D) getGraphics();
@@ -1076,6 +1077,8 @@ public class ManyLineLyricsView extends JPanel {
 					smoothScrollTo(mLyricsLineTreeMap.size() - 1);
 					isTouchMove = false;
 					return;
+				} else {
+					smoothScrollTo(scrollLrcLineNum);
 				}
 
 				int startTime = mLyricsLineTreeMap.get(scrollLrcLineNum)
