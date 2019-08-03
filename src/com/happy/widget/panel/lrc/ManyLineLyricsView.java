@@ -702,12 +702,16 @@ public class ManyLineLyricsView extends JPanel {
 				if (mTranslateLrcLineInfos != null
 						&& mTranslateLrcLineInfos.size() > 0) {
 					scrollHeight += getExtraLrcLineHeight(g2d);
+					mDuration = 1000;
 				}
 			} else if (mExtraLrcStatus == SHOWTRANSLITERATIONLRC) {
 				if (mTransliterationLrcLineInfos != null
 						&& mTransliterationLrcLineInfos.size() > 0) {
 					scrollHeight += getExtraLrcLineHeight(g2d);
+					mDuration = 1000;
 				}
+			} else {
+				mDuration = 500;
 			}
 		}
 		return scrollHeight;
