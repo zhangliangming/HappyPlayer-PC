@@ -25,7 +25,6 @@ public class ValueAnimator {
 	private Particule particule;
 
 	public ValueAnimator() {
-		manager = new TweenManager();
 		Tween.setPoolEnabled(true);
 	}
 
@@ -35,6 +34,9 @@ public class ValueAnimator {
 	 * @param end
 	 */
 	public synchronized void ofFloat(float start, float end) {
+		if (manager == null) {
+			manager = new TweenManager();
+		}
 		if (particule == null)
 			particule = new Particule();
 		particule.setX(0);
@@ -101,8 +103,10 @@ public class ValueAnimator {
 
 	public void cancel() {
 		isFinish = true;
-		if (manager != null)
+		if (manager != null) {
 			manager.clear();
+			manager = null;
+		}
 		if (animationListener != null) {
 			animationListener.onAnimationEnd(particule.getY());
 		}
