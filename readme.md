@@ -1,5 +1,28 @@
 # 简介 #
-乐乐音乐是基于musique 开源播放器开发的java swing音乐播放器，实现了mp3、flac、ape、wav等多种音频格式的播放和ksc歌词的解析、制作和显示。
+乐乐音乐是基于musique 开源播放器开发的java swing音乐播放器，实现了mp3、flac、ape、wav等多种音频格式的播放和ksc歌词的解析、制作和显示
+
+# 乐乐音乐6.0 #
+乐乐6.0是网络版，添加了在线歌曲试听、下载、歌曲搜索、歌手头像、歌手写真及在线歌词功能，还有桌面歌词添加了桌面窗口调整大小功能。由于学习交流时间结束，该版本源码暂不提供下载。
+
+# 开发环境 #
+myeclipse、java swing
+
+# 部分图片预览 #
+
+![](https://i.imgur.com/t9MqGTS.png)
+
+
+![](https://i.imgur.com/W4e2hwh.png)
+
+![](https://i.imgur.com/uh0j5Ln.png)
+
+![](https://i.imgur.com/8vlrBn0.png)
+
+# 安装包 #
+
+链接: [https://pan.baidu.com/s/1NEfCFLmqOSL7uQTa0eNUMw](https://pan.baidu.com/s/1NEfCFLmqOSL7uQTa0eNUMw) 提取码: 5pq4 复制这段内容后打开百度网盘手机App，操作更方便哦
+
+
 # 更新日志 #
 - 2017-09-27：实现歌词快进功能
 - 2017-09-26：初步实现多行歌词优化。
