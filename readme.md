@@ -16,7 +16,8 @@ myeclipse、java swing
 
 ![](https://i.imgur.com/uh0j5Ln.png)
 
-![](https://i.imgur.com/8vlrBn0.png)
+![20200905160747.png](https://upload-images.jianshu.io/upload_images/4111431-1e9250612ad166f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 # 安装包 #
 
@@ -24,6 +25,7 @@ myeclipse、java swing
 
 
 # 更新日志 #
+- 2020-09-05：制作歌词添加行编辑，制作时按下↓键即可；桌面歌词添加多颜色渐变。
 - 2017-09-27：实现歌词快进功能
 - 2017-09-26：初步实现多行歌词优化。
 - 2017-0-25：注释多行歌词（多行歌词还要想一下怎样实现）。实现桌面歌词（双行歌词）支持显示翻译歌词和音译歌词。
