@@ -1,3 +1,15 @@
+#HappyPlayer-JavaFX版本
+
+##网络歌曲界面
+![网络歌曲.png](https://upload-images.jianshu.io/upload_images/4111431-7d9a1e54fe923ec5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+##多行歌词界面
+![多行歌词.png](https://upload-images.jianshu.io/upload_images/4111431-563d70e67035f526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+##桌面歌词
+![桌面歌词.png](https://upload-images.jianshu.io/upload_images/4111431-26486b851ee5d995.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 # 简介 #
 乐乐音乐是基于musique 开源播放器开发的java swing音乐播放器，实现了mp3、flac、ape、wav等多种音频格式的播放和ksc歌词的解析、制作和显示
 
